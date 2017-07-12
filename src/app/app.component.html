@@ -17,31 +17,26 @@
                    <a [routerLink]="['home']" style="margin-left:60px;">Home</a>
                 </li>
                                 
-                <li class="dropdown">
-                  <a data-toggle="dropdown" href="#" class="dropdown-toggle">pages</a>
+                <li *ngIf="user" class="dropdown">
+                  <a data-toggle="dropdown" href="#" class="dropdown-toggle">Patients</a>
                   <ul class="dropdown-menu">
-                    <li><a href="services.html">Services V1</a></li>
-                    <li><a href="services_2.html">Services V2</a></li>
-                    <li><a href="doctors.html">Doctors</a></li>
-                    <li><a href="departments.html">Departments</a></li>
-                    <li><a href="procedure.html">Procedures</a></li>
-                    <li><a href="blog-detail.html">Blog Detail</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="">Add new Patient</a></li>
+                    
                   </ul>
                 </li>
-                <li class="dropdown">
-                  <a data-toggle="dropdown" href="#" class="dropdown-toggle">gallery</a>
+                <li *ngIf="user" class="dropdown">
+                  <a data-toggle="dropdown" href="#" class="dropdown-toggle">Reports</a>
                   <ul class="dropdown-menu">
-                    <li><a href="gallery.html">Gallery Three</a></li>
-                    <li><a href="gallery4c.html">Gallery Four column</a></li>
-                    <li><a href="gallery2c.html">Gallery Two column</a></li>
+                    <li><a href="gallery.html">Patients</a></li>
+                    <li><a href="gallery4c.html">Treatments</a></li>
+                    <li><a href="gallery2c.html">Follow Ups</a></li>
                   </ul>
                 </li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
-                <li><a [routerLink]="['signup']"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li *ngIf="!user" ><a href="#"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
+                <li *ngIf="user" ><a href="#"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+                <li *ngIf="!user"><a [routerLink]="['signup']"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
               </ul>
             </div>
           </nav>
