@@ -23,11 +23,18 @@ export class LoginComponent implements OnInit {
   constructor(
     private session : SessionService,
     public loggedIn : LoggedInService,
+    public logOut : LoggedInService,
   ) { }
 
   ngOnInit() {
+    this.logOut.userInfoSubject.subscribe(
+      userInfo => {
+        console.log('*** THIS USER COMES FROM SUBJECT SERVICE  LoggedInService AFTER LOG OUT ***');
+        console.log(userInfo);
+        this.user = userInfo;
+      }
+    )
   }
-
   login() {
     const thePromise = this.session.login(this.loginInfo);
     this.displayInfo();

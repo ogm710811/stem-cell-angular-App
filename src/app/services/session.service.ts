@@ -24,7 +24,7 @@ export class SessionService {
 
   login (credentials) {
     this.sessionParams = '/login';
-    const theOriginalPromise = this.http.post(this.sessionUrl + this.sessionParams, credentials).toPromise();
+    const theOriginalPromise = this.http.post( this.sessionUrl + this.sessionParams, credentials ).toPromise();
 
     const theParsedPromise = theOriginalPromise.then((result) => {
       return result.json();
@@ -33,7 +33,12 @@ export class SessionService {
     return theParsedPromise;
   }
 
-
+  logout () {
+    this.sessionParams = '/logout';
+    return this.http.post( this.sessionUrl + this.sessionParams, {} )
+      .toPromise()
+      .then(result => result.json());
+  }
 
 
 
