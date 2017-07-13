@@ -59,7 +59,7 @@ export class SignupComponent implements OnInit {
   }
 
   displayInfo() {
-    console.log('*** THIS IS THE SIGNUP INFO ***');
+    console.log('*** THIS IS THE SIGNUP INFO FROM THE FORM ***');
     console.log(this.signupInfo);
   }
 }

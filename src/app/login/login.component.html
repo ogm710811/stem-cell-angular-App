@@ -18,7 +18,7 @@
       <div class="col-md-8 col-sm-8">
         <h2 class="heading">Login</h2>
         <hr class="heading_space">
-        <form class="callus" onSubmit="return false"  id="contact_form">
+        <form #logInForm="ngForm" class="callus" id="login_form">
           <div class="row">
           
            <div class="col-md-12">
@@ -27,26 +27,39 @@
           
             <div class="col-md-6">
               <div class="form-group">
-                <input class="form-control" type="text" name="username" id="username"  placeholder="username" required />
+                <input class="form-control" type="text" name="username" [(ngModel)]="loginInfo.username" id="username"  placeholder="username" required />
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <input class="form-control" type="password" name="password" id="password"  placeholder="password" required />
+                <input class="form-control" type="password" name="password" [(ngModel)]="loginInfo.password" id="password"  placeholder="password" required />
               </div>
             </div>
             <div class="col-md-12">
               <div class="form-group">
-                 <div class="btn-submit button3">
-                <input type="submit" value="Login" id="btn_contact_submit">
-                
+                <div class="btn-submit button3">
+                  <input type="submit" value="Login" (click)="login()">
                 </div>
               </div>
             </div>
           </div>
         </form>
       </div>
-      <div class="col-md-4 col-sm-4 medix"></div>
+      <div *ngIf="user" class="col-md-4 col-sm-4 medix">
+        <h2 class="heading">User Info</h2>
+        <hr class="heading_space"> 
+        <p><strong>Full Name:</strong> {{ user.fullName }}</p>
+        <p><strong>Username:</strong>  {{ user.username }}</p>
+        <p><strong>Role:</strong>      {{ user.role | uppercase }}</p>
+        <p><strong>User Id:</strong>   {{ user._id }}</p>
+        <br>
+        <p><strong>{{ today | date:'medium' }}</strong></p>
+         <!-- <ul class="social_icon">
+            <li class="black"><a href="#" class="facebook"><i class="icon-facebook5"></i></a></li>
+            <li class="black"><a href="#" class="twitter"><i class="icon-twitter4"></i></a></li>
+            <li class="black"><a href="#" class="google"><i class="icon-google"></i></a></li>
+          </ul> -->
+      </div>
     </div>
   </div>
 </section>

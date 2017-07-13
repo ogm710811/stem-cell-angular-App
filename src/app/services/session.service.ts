@@ -13,7 +13,6 @@ export class SessionService {
 
   signup (user) {
     this.sessionParams = '/signup';
-
     const theOriginalPromise = this.http.post( this.sessionUrl + this.sessionParams, user).toPromise();
     
     const theParsedPromise = theOriginalPromise.then((result) => {
@@ -23,11 +22,27 @@ export class SessionService {
     return theParsedPromise;
   }
 
-  isLoggedIn () {
-    this.sessionParams = '/loggedin';
-    
-    return this.http.get( this.sessionUrl + this.sessionParams )
-      .toPromise()
-      .then(result => result.json());
+  login (credentials) {
+    this.sessionParams = '/login';
+    const theOriginalPromise = this.http.post(this.sessionUrl + this.sessionParams, credentials).toPromise();
+
+    const theParsedPromise = theOriginalPromise.then((result) => {
+      return result.json();
+    });
+
+    return theParsedPromise;
   }
+
+
+
+
+
+
+  // isLoggedIn () {
+  //   this.sessionParams = '/loggedin';
+    
+  //   return this.http.get( this.sessionUrl + this.sessionParams )
+  //     .toPromise()
+  //     .then(result => result.json());
+  // }
 }
