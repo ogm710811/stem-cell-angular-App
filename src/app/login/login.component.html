@@ -1,0 +1,52 @@
+<!--Page header & Title-->
+<section id="page_header">
+  <div class="page_title">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+           <h2 class="title">User Login</h2>
+           <div class="page_link"><a [routerLink]="['']">Home</a><span><i class="fa fa-long-arrow-right"></i>Log In</span></div>
+        </div>
+      </div>
+    </div>
+  </div>  
+</section>
+<!--Login Form -->
+<section class="padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-sm-8">
+        <h2 class="heading">Login</h2>
+        <hr class="heading_space">
+        <form class="callus" onSubmit="return false"  id="contact_form">
+          <div class="row">
+          
+           <div class="col-md-12">
+                    <div id="result" class="text-center form-group"></div>
+           </div>
+          
+            <div class="col-md-6">
+              <div class="form-group">
+                <input class="form-control" type="text" name="username" id="username"  placeholder="username" required />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input class="form-control" type="password" name="password" id="password"  placeholder="password" required />
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                 <div class="btn-submit button3">
+                <input type="submit" value="Login" id="btn_contact_submit">
+                
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-4 col-sm-4 medix"></div>
+    </div>
+  </div>
+</section>

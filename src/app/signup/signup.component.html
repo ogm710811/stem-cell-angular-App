@@ -3,8 +3,8 @@
 <div class="page_title">
   <div class="container">
     <div class="row">
-      <!-- ERROR alert goes here -->
-      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>      
+      
+      <!-- <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>      
       <div *ngIf='error' class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
         <div class="alert alert-danger" role="alert">
           <h4 class="alert-heading">Oh snap!</h4>
@@ -12,7 +12,7 @@
           <p class="mb-0">Please, try again.</p>
         </div>
       </div>
-      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
+      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div> -->
       <div class="col-md-12">
          <h2 class="title">Sign Up</h2>
          <div class="page_link"><a [routerLink]="['']">Home</a><span><i class="fa fa-long-arrow-right"></i>Signup Form</span></div>
@@ -33,7 +33,7 @@
         <div class="col-md-7 col-sm-8">
           
           <div class="row">
-            <form class="callus" id="app_form">
+            <form #signUpForm="ngForm" class="callus" id="app_form">
               <div class="row">
                 
                  <div class="col-md-12">
@@ -61,6 +61,17 @@
                     <input type="submit" value="Register" (click)="signup()"/>
                     </div>
                   </div>
+                  <!-- ERROR alert goes here -->
+                  <div *ngIf='error' class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                    <div class="alert alert-danger" style="color:white; background-color:red">
+                      <strong>Oh snap! </strong>  An error occurred, try again.
+                    </div>
+                  </div>
+                  <div *ngIf='user' class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                    <div class="alert alert-success" style="color:white; background-color:green">
+                      <strong>Success Signed Up! </strong> {{ user.fullName }}
+                    </div>
+                  </div>                  
                 </div>
               </div>
             </form>
