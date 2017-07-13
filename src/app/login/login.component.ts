@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.logOut.userInfoSubject.subscribe(
       userInfo => {
-        console.log('*** THIS USER COMES FROM SUBJECT SERVICE  LoggedInService AFTER LOG OUT ***');
+        console.log('*** LOGIN PAGE => USER INFO ***');
         console.log(userInfo);
         this.user = userInfo;
       }
@@ -37,12 +37,12 @@ export class LoginComponent implements OnInit {
   }
   login() {
     const thePromise = this.session.login(this.loginInfo);
-    this.displayInfo();
+    //this.displayInfo();
 
     thePromise.then((userInfo) => {
       this.user = userInfo;      
       this.error = null;
-      console.log(this.user);
+      //console.log(this.user);
 
       // this use the LoggedInService to 
       // send the user information once he is signed up.
@@ -56,8 +56,8 @@ export class LoginComponent implements OnInit {
     thePromise.catch((err) => {
       this.user = null;
       this.error = err._body;
-      console.log('*** THIS IS AN ERROR ***')
-      console.log(this.error._body);
+      // console.log('*** THIS IS AN ERROR ***')
+      // console.log(this.error._body);
     });
   }
 

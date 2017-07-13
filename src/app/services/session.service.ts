@@ -39,15 +39,4 @@ export class SessionService {
       .toPromise()
       .then(result => result.json());
   }
-
-
-
-
-  // isLoggedIn () {
-  //   this.sessionParams = '/loggedin';
-    
-  //   return this.http.get( this.sessionUrl + this.sessionParams )
-  //     .toPromise()
-  //     .then(result => result.json());
-  // }
 }

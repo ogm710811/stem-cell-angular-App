@@ -21,7 +21,7 @@ export class AppComponent implements OnInit{
   ngOnInit() {
     this.loggedInService.userInfoSubject.subscribe(
       userInfo => {
-        console.log('*** THIS USER COMES FROM SUBJECT SERVICE  LoggedInService ***');
+        console.log('*** NAVBAR COMPONENT => USER INFO***');
         console.log(userInfo);
         this.user = userInfo;
       }

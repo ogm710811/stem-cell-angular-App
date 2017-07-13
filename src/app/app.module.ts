@@ -7,26 +7,31 @@ import { HttpModule       } from '@angular/http';
 
 import { SessionService   } from './services/session.service';
 import { LoggedInService  } from './services/logged-in.service';
+import { PatientService   } from './services/patient.service';
 
 import { AppComponent     } from './app.component';
 import { HomeComponent    } from './home/home.component';
 import { SignupComponent  } from './signup/signup.component';
 import { LoginComponent   } from './login/login.component';
+import { PatientListComponent } from './patient-list/patient-list.component';
+import { PatientDetailComponent } from './patient-detail/patient-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home',    component: HomeComponent },
-  { path: 'signup',  component: SignupComponent },
-  { path: 'login',   component: LoginComponent },
-  
+  { path: 'home',         component: HomeComponent },
+  { path: 'signup',       component: SignupComponent },
+  { path: 'login',        component: LoginComponent },
+  { path: 'patients',     component: PatientListComponent },
+  { path: 'patient/:id',  component: PatientDetailComponent },
 ];
-
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    PatientListComponent,
+    PatientDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +42,7 @@ const routes: Routes = [
   providers: [
     SessionService,
     LoggedInService,
+    PatientService,
   ],
   bootstrap: [AppComponent]
 })

@@ -21,13 +21,13 @@
                   <a data-toggle="dropdown" href="#" class="dropdown-toggle">Patients</a>
                   <ul class="dropdown-menu">
                     <li><a href="">Add new Patient</a></li>
-                    
+                    <li><a href="">Search For Patient</a></li>
                   </ul>
                 </li>
                 <li *ngIf="user" class="dropdown">
                   <a data-toggle="dropdown" href="#" class="dropdown-toggle">Reports</a>
                   <ul class="dropdown-menu">
-                    <li><a href="gallery.html">Patients</a></li>
+                    <li><a [routerLink]="['patients']">Patients</a></li>
                     <li><a href="gallery4c.html">Treatments</a></li>
                     <li><a href="gallery2c.html">Follow Ups</a></li>
                   </ul>

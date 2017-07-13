@@ -33,12 +33,12 @@ export class SignupComponent implements OnInit {
 
   signup() {
     const thePromise = this.session.signup(this.signupInfo);
-    this.displayInfo();
+    //this.displayInfo();
 
     thePromise.then((userInfo) => {
       this.user = userInfo;      
       this.error = null;
-      console.log(this.user);
+      //console.log(this.user);
     
     // this use the LoggedInService to 
     // send the user information once he is signed up.
@@ -53,8 +53,8 @@ export class SignupComponent implements OnInit {
     thePromise.catch((err) => {
       this.user = null;
       this.error = err._body;
-      console.log('*** THIS IS AN ERROR ***')
-      console.log(this.error._body);
+      // console.log('*** THIS IS AN ERROR ***')
+      // console.log(this.error._body);
     });
   }
 
