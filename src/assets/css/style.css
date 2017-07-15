@@ -2363,6 +2363,11 @@ footer .copyright ul.social_icon {
   margin: 20px 0 !important;
   padding: 5px 13px;
   }
+
+  .logo {
+    margin-top: -10px;
+    margin-left: -15px;
+  }
 }
 @media screen and (max-width: 1000px){
    .padding{

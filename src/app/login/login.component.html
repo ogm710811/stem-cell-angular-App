@@ -41,6 +41,12 @@
                   <input type="submit" value="Login" (click)="login()">
                 </div>
               </div>
+              <!-- ERROR alert goes here -->
+              <div *ngIf='error' class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                <div class="alert alert-danger" style="color:white; background-color:red;">
+                  <strong>Oh snap! </strong>  An error occurred, try again.
+                </div>
+              </div>
             </div>
           </div>
         </form>

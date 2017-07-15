@@ -1,4 +1,4 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit, OnDestroy  } from '@angular/core';
 import { ViewChild          } from '@angular/core';
 import { NgForm             } from '@angular/forms';
 import { SessionService     } from '../services/session.service';
@@ -9,7 +9,7 @@ import { LoggedInService    } from '../services/logged-in.service'
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
   // using ViewChild allows to reset the form ones the
   // user click the submit button
@@ -30,10 +30,23 @@ export class LoginComponent implements OnInit {
     this.logOut.userInfoSubject.subscribe(
       userInfo => {
         console.log('*** LOGIN PAGE => USER INFO ***');
-        console.log(userInfo);
         this.user = userInfo;
+        console.log(this.user);
       }
     )
+  }
+
+  /*
+    The user info is passed from this component to the service LoggedInService
+    ones the component is destroy ngOnDestroy() that way the user info (user._id) will be
+    available in other components to be use in *ngIf derective.
+  */
+  ngOnDestroy() {
+    // this.loggedIn.userInfo = this.user;
+    console.log('*** LOGIN PAGE => USER INFO => OnDestroy() ***');
+    console.log(this.user._id);
+    this.loggedIn.userInfo = this.user._id;
+    console.log(this.user._id);
   }
   login() {
     const thePromise = this.session.login(this.loginInfo);

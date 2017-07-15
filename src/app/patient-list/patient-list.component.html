@@ -1,10 +1,29 @@
+<!--Page header & Title-->
+<section id="page_header">
+<div class="page_title">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+         <h2 class="title">Patient Details</h2>
+         <div class="page_link"><a [routerLink]="['']">Home</a><i class="fa fa-long-arrow-right"></i><span>Reports</span><i class="fa fa-long-arrow-right"></i><span>Patient List</span></div>
+        <!-- Alert if user is not logged in goes here  -->
+        <div *ngIf='!userInfo' style="padding-top:50px;"  class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="alert alert-danger" style="color:white; background-color:red;">
+            <strong>Oh snap! </strong>    You are not authorize to see this page.
+          </div>
+        </div> 
+      </div>
+    </div>
+  </div>
+</div>  
+</section>
+
 <div class="container">
   <hr>
-  {{ user }}
   <br>
 	<div class="row">
-    <div class="col-md-12">
-        <div class="table-responsive">
+    <div *ngIf="userInfo" class="col-md-12">
+      <div class="table-responsive">
           <table id="mytable" class="table table-bordred table-striped">
             <thead>
               <th>FIRST NAME</th>

@@ -15,4 +15,11 @@ export class PatientService {
       .toPromise()
       .then(apiResponse => apiResponse.json())
   }
+  
+  getOnePatient(id) {
+    this.patientParams = `/patients/${ id }`
+    return this.http.get( this.patientUrl + this.patientParams )
+      .toPromise()
+      .then(apiResponse => apiResponse.json())
+  }
 }

@@ -5,6 +5,13 @@ import { Subject    } from 'rxjs/Subject';
 export class LoggedInService {
 
   /*
+    This property userInfo will save the user._Id value ones the
+    user log in or sign up. That way the user._Id will available
+    for all compoenents in the app using this service.
+  */
+  public userInfo: string;
+
+  /*
     A Subject is both an Observable (so we can subscribe() to it) and an 
     Observer (so we can call next() on it to emit a new value). 
     We exploit this feature. A Subject allows values to be multicast to many Observers. 
