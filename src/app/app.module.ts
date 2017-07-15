@@ -13,8 +13,9 @@ import { AppComponent     } from './app.component';
 import { HomeComponent    } from './home/home.component';
 import { SignupComponent  } from './signup/signup.component';
 import { LoginComponent   } from './login/login.component';
-import { PatientListComponent } from './patient-list/patient-list.component';
+import { PatientListComponent   } from './patient-list/patient-list.component';
 import { PatientDetailComponent } from './patient-detail/patient-detail.component';
+import { PatientAddComponent    } from './patient-add/patient-add.component';
 
 const routes: Routes = [
   { path: '',       redirectTo: 'home', pathMatch: 'full' },
@@ -22,7 +23,9 @@ const routes: Routes = [
   { path: 'signup',         component: SignupComponent },
   { path: 'login',          component: LoginComponent },
   { path: 'patients',       component: PatientListComponent },
+  { path: 'patient/add',    component: PatientAddComponent },
   { path: 'patient/:id',    component: PatientDetailComponent },
+  
 ];
 @NgModule({
   declarations: [
@@ -31,7 +34,8 @@ const routes: Routes = [
     SignupComponent,
     LoginComponent,
     PatientListComponent,
-    PatientDetailComponent
+    PatientDetailComponent,
+    PatientAddComponent
   ],
   imports: [
     BrowserModule,

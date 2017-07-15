@@ -20,7 +20,7 @@
                 <li *ngIf="user" class="dropdown">
                   <a data-toggle="dropdown" href="#" class="dropdown-toggle">Patients</a>
                   <ul class="dropdown-menu">
-                    <li><a href="">Add new Patient</a></li>
+                    <li><a [routerLink]="['patient/add']">Add new Patient</a></li>
                     <li><a href="">Search For Patient</a></li>
                   </ul>
                 </li>
