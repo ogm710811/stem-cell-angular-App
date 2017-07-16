@@ -1,15 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Subject    } from 'rxjs/Subject';
 
+import { User       } from '../model/user-model';
+
 @Injectable()
 export class LoggedInService {
 
   /*
-    This property userInfo will save the user._Id value ones the
-    user log in or sign up. That way the user._Id will available
-    for all compoenents in the app using this service.
+    This property will save the user info value ones the
+    user log in or sign up. That way the user will available
+    for all components in the app using this service.
   */
-  public userInfo: string;
+  private theUser : User;
+
+  getUserInfo() {
+    return this.theUser;
+  }
 
   /*
     A Subject is both an Observable (so we can subscribe() to it) and an 
@@ -22,6 +28,8 @@ export class LoggedInService {
   constructor() { }
 
   sendUserInfo(userInfo) {
+    console.log(`USER AT LOGGED IN SERVICE ${ userInfo.getFullName() }`);
     this.userInfoSubject.next(userInfo);
+    this.theUser = userInfo;
   }
 }

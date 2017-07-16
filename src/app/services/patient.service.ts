@@ -11,15 +11,17 @@ export class PatientService {
 
   getPatientList() {
     this.patientParams = '/patients'
-    return this.http.get( this.patientUrl + this.patientParams )
+    return this.http.get( this.patientUrl + this.patientParams,
+                          { withCredentials: true})
       .toPromise()
       .then(apiResponse => apiResponse.json())
   }
   
   getOnePatient(id) {
     this.patientParams = `/patients/${ id }`
-    return this.http.get( this.patientUrl + this.patientParams )
+    return this.http.get( this.patientUrl + this.patientParams,
+                          { withCredentials: true })
       .toPromise()
       .then(apiResponse => apiResponse.json())
   }
-}
+}     

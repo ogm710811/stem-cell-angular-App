@@ -1,8 +1,11 @@
 import { Component, OnInit, OnDestroy  } from '@angular/core';
 import { ViewChild          } from '@angular/core';
 import { NgForm             } from '@angular/forms';
+
 import { SessionService     } from '../services/session.service';
 import { LoggedInService    } from '../services/logged-in.service'
+
+import { User               } from '../model/user-model';
 
 @Component({
   selector: 'app-login',
@@ -15,25 +18,26 @@ export class LoginComponent implements OnInit, OnDestroy {
   // user click the submit button
   @ViewChild('logInForm') logInForm: NgForm;
 
-  private loginInfo : any =  {};
-  private user: any;
-  private error: any;
-  private today: Date = new Date();
+  private loginInfo : Object =  {};
+  // private user: any = '';
+  private theUser : User;
+  private error   : String;
+  private today   : Date = new Date();
 
   constructor(
     private session : SessionService,
     public loggedIn : LoggedInService,
-    public logOut : LoggedInService,
   ) { }
 
   ngOnInit() {
-    this.logOut.userInfoSubject.subscribe(
-      userInfo => {
-        console.log('*** LOGIN PAGE => USER INFO ***');
-        this.user = userInfo;
-        console.log(this.user);
-      }
-    )
+    // get user info from the service 
+    // this.loggedIn.userInfoSubject.subscribe(
+    //   userInfo => {
+    //     // this.user = userInfo;
+    //     this.theUser = userInfo
+    //     console.log(`USER AT LOGIN PAGE => ${ this.theUser.getFullName() }`);
+    //   }
+    // )
   }
 
   /*
@@ -42,40 +46,44 @@ export class LoginComponent implements OnInit, OnDestroy {
     available in other components to be use in *ngIf derective.
   */
   ngOnDestroy() {
-    // this.loggedIn.userInfo = this.user;
-    console.log('*** LOGIN PAGE => USER INFO => OnDestroy() ***');
-    console.log(this.user._id);
-    this.loggedIn.userInfo = this.user._id;
-    console.log(this.user._id);
+      // this.loggedIn.userInfo = this.user;
+      // console.log('*** LOGIN PAGE => USER INFO => OnDestroy() ***');
+      // console.log(this.user._id);
+      // this.loggedIn.userInfo = this.user._id;
+      // console.log(this.user._id);
   }
   login() {
     const thePromise = this.session.login(this.loginInfo);
-    //this.displayInfo();
-
+    
     thePromise.then((userInfo) => {
-      this.user = userInfo;      
-      this.error = null;
-      //console.log(this.user);
+      //this.user = userInfo; 
+      this.theUser = new User( userInfo._id, userInfo.updated_at, userInfo.created_at, 
+        userInfo.username, userInfo.fullName, userInfo.role )
+      this.displayInfo();
 
-      // this use the LoggedInService to 
-      // send the user information once he is signed up.
+      this.error = null;
+      
+      // this use the LoggedInService thru a Subject Object to 
+      // send the user information once he is logged in.
       // user info will be used for others components
-      this.loggedIn.sendUserInfo(this.user);
+      //this.loggedIn.sendUserInfo(this.user);
+      this.loggedIn.sendUserInfo(this.theUser);
+
       // after pass the user info we clear the form
       // using the ViewChild
       this.logInForm.reset();
     });
 
     thePromise.catch((err) => {
-      this.user = null;
-      this.error = err._body;
-      // console.log('*** THIS IS AN ERROR ***')
-      // console.log(this.error._body);
+      //this.user = '';
+      this.theUser = null;
+      const apiError = err.json();
+      this.error = apiError.message;
+      this.logInForm.reset();
     });
   }
 
   displayInfo() {
-    console.log('*** THIS IS THE LOGIN INFO FROM THE FORM ***');
-    console.log(this.loginInfo);
+    console.log(`USER AT LOGIN PAGE => ${ this.theUser.getFullName() }`);
   }
 }

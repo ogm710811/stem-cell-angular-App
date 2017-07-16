@@ -4,6 +4,9 @@ import { ActivatedRoute    } from '@angular/router';
 
 import { PatientService    } from '../services/patient.service'; 
 import { LoggedInService   } from '../services/logged-in.service';
+import { SessionService    } from '../services/session.service';
+
+import { User              } from '../model/user-model';
 
 @Component({
   selector: 'app-patient-list',
@@ -12,50 +15,38 @@ import { LoggedInService   } from '../services/logged-in.service';
 })
 export class PatientListComponent implements OnInit {
   private patients: Array<Object> = [];
-  private error: any;
-  private userInfo: string;
+  private error: String;
+  private theUser: User;
+  private isLoggedIn: boolean = false;
 
   constructor( 
-    private patientService : PatientService,
-    private loggedInService: LoggedInService,
+    private patientService: PatientService,
+    private sessionservice: SessionService,
+    private loggedIn: LoggedInService,
     private router: Router,
     private actRouter: ActivatedRoute,
   ) { }
 
   ngOnInit() {
-    
-    // GET THE PATIENT LIST
+    // get patient list
     this.patientService.getPatientList()
       .then((patientList) => {
         this.patients = patientList;
-        // console.log('*** THIS IS THE LIST OF PATIENTS ***');
-        // console.log(this.patients);
       })
       .catch((error) => {
         this.error = 'There was an error. Please, try again later';
       })
 
-      /*** THIS SERVICE IS NOT WORKING IN THIS COMPONENT ***/
-      // this.loggedInService.userInfoSubject.subscribe(
-      //   userInfo => {
-      //     console.log('*** PATIENT LIST PAGE => USER INFO ***');
-      //     console.log(userInfo);
-      //     this.user = userInfo;
-      //   }
-      // );
-
-      /*
-        The user info comes from the property 'userInfo'
-        created in the service LoggedInService, that
-        property gets a value after the user is logged in
-        or signed up, during the ngOnDestroy() function.
-      */
-      this.userInfo = this.loggedInService.userInfo;
-      console.log('*** PATIENT LIST PAGE => USER INFO ***');
-      console.log(this.userInfo);
+    // get user from the service thru the property theUser.
+    this.theUser = this.loggedIn.getUserInfo();
+    this.displayInfo();
   }
 
   viewDetails(id) {
     this.router.navigate(['patient', id]);
+  }
+
+  displayInfo() {
+    console.log(`USER AT PATIENT LIST PAGE => ${ this.theUser.getFullName() }`);
   }
 }

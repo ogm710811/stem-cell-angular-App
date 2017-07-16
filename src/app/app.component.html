@@ -17,14 +17,14 @@
                    <a [routerLink]="['home']" style="margin-left:60px;">Home</a>
                 </li>
                                 
-                <li *ngIf="user" class="dropdown">
+                <li *ngIf="theUser" class="dropdown">
                   <a data-toggle="dropdown" href="#" class="dropdown-toggle">Patients</a>
                   <ul class="dropdown-menu">
                     <li><a [routerLink]="['patient/add']">Add new Patient</a></li>
                     <li><a href="">Search For Patient</a></li>
                   </ul>
                 </li>
-                <li *ngIf="user" class="dropdown">
+                <li *ngIf="theUser" class="dropdown">
                   <a data-toggle="dropdown" href="#" class="dropdown-toggle">Reports</a>
                   <ul class="dropdown-menu">
                     <li><a [routerLink]="['patients']">Patients</a></li>
@@ -34,9 +34,9 @@
                 </li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
-                <li *ngIf="!user" ><a [routerLink]="['login']"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
-                <li *ngIf="user" (click)="logout()"><a style="cursor:pointer;"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
-                <li *ngIf="!user"><a [routerLink]="['signup']"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li *ngIf="!theUser" ><a [routerLink]="['login']"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
+                <li *ngIf="theUser" (click)="logout()"><a style="cursor:pointer;"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+                <li *ngIf="!theUser"><a [routerLink]="['signup']"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
               </ul>
             </div>
           </nav>

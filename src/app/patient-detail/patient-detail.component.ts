@@ -4,6 +4,8 @@ import { ActivatedRoute    } from '@angular/router';
 import { LoggedInService   } from '../services/logged-in.service'
 import { PatientService    } from '../services/patient.service'; 
 
+import { User              } from '../model/user-model';
+
 @Component({
   selector: 'app-patient-detail',
   templateUrl: './patient-detail.component.html',
@@ -12,8 +14,8 @@ import { PatientService    } from '../services/patient.service';
 export class PatientDetailComponent implements OnInit {
   private patientId;
   private patient: Array<Object> = [];
-  private error: any;
-  private userInfo: string;
+  private error: String;
+  private theUser: User;
   private conditions: Object = {
     'COPD' : 'CHRONIC OBSTRUCTIVE PULMONARY DISEASE',
     'ED'   : 'ERECTILE DYSFUNCTION',
@@ -46,29 +48,21 @@ export class PatientDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // get the patient Id from the url comming from patient list
+    // in params :id
     this.route.params
       .subscribe((params) => {
         this.patientId = (params['id']);
-        console.log(`PATIENT ID FROM PATIENT LIST => ${ this.patientId }`);
       })
     
-    /*
-      The user info comes from the property 'userInfo'
-      created in the service LoggedInService, that
-      property gets a value after the user is logged in
-      or signed up, during the ngOnDestroy() function.
-    */
-    this.userInfo = this.loggedIn.userInfo;
-    console.log('*** PATIENT LIST PAGE => USER INFO ***');
-    console.log(this.userInfo);
-
+    // get user from the service thru the property theUser.
+    this.theUser = this.loggedIn.getUserInfo();
+    this.displayInfo();
 
     // GET THE PATIENT DETAILS
     this.patientService.getOnePatient(this.patientId)
       .then((onePatient) => {
-        this.patient = onePatient
-        console.log('*** THIS IS A PATIENT DETAIL ***');
-        console.log(this.patient);
+        this.patient = onePatient;
         this.getPatientCondition(this.patient);
         this.getDeliveryMethod(this.patient);
       })
@@ -99,5 +93,9 @@ export class PatientDetailComponent implements OnInit {
         this.deliveryMethod = '';
       }      
     }
+  }
+
+  displayInfo() {
+    console.log(`USER AT PATIENT DETAILS PAGE => ${ this.theUser.getFullName() }`);
   }
 } // ends class

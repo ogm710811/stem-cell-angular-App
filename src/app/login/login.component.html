@@ -18,13 +18,17 @@
       <div class="col-md-8 col-sm-8">
         <h2 class="heading">Login</h2>
         <hr class="heading_space">
-        <form #logInForm="ngForm" class="callus" id="login_form">
+        <!-- Success Log In Message here ..  -->
+        <div *ngIf='theUser' class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+          <div class="alert alert-danger" style="color:white; background-color:green;">
+            <strong>Success Logged In! </strong> {{ theUser.getFullName() }}
+          </div>
+        </div>
+        <form *ngIf='!theUser' #logInForm="ngForm" class="callus" id="login_form">
           <div class="row">
-          
-           <div class="col-md-12">
-                    <div id="result" class="text-center form-group"></div>
-           </div>
-          
+            <div class="col-md-12">
+              <div id="result" class="text-center form-group"></div>
+            </div> 
             <div class="col-md-6">
               <div class="form-group">
                 <input class="form-control" type="text" name="username" [(ngModel)]="loginInfo.username" id="username"  placeholder="username" required />
@@ -44,20 +48,21 @@
               <!-- ERROR alert goes here -->
               <div *ngIf='error' class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
                 <div class="alert alert-danger" style="color:white; background-color:red;">
-                  <strong>Oh snap! </strong>  An error occurred, try again.
+                  <strong>Oh snap! </strong>   {{ error }}
+                  <!-- An error occurred, try again. -->
                 </div>
               </div>
             </div>
           </div>
         </form>
       </div>
-      <div *ngIf="user" class="col-md-4 col-sm-4 medix">
+      <div *ngIf="theUser" class="col-md-4 col-sm-4 medix">
         <h2 class="heading">User Info</h2>
         <hr class="heading_space"> 
-        <p><strong>Full Name:</strong> {{ user.fullName }}</p>
-        <p><strong>Username:</strong>  {{ user.username }}</p>
-        <p><strong>Role:</strong>      {{ user.role | uppercase }}</p>
-        <p><strong>User Id:</strong>   {{ user._id }}</p>
+        <p><strong>Full Name:</strong> {{ theUser.getFullName() }}</p>
+        <p><strong>Username:</strong>  {{ theUser.getUsername() }}</p>
+        <p><strong>Role:</strong>      {{ theUser.getRole() | uppercase }}</p>
+        <p><strong>User Id:</strong>   {{ theUser.getId() }}</p>
         <br>
         <p><strong>{{ today | date:'medium' }}</strong></p>
          <!-- <ul class="social_icon">
