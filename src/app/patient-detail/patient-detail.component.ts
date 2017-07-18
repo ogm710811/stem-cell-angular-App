@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Input             } from '@angular/core';
 import { ActivatedRoute    } from '@angular/router';
 
 import { LoggedInService   } from '../services/logged-in.service'

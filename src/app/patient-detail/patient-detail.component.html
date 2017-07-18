@@ -18,8 +18,8 @@
 </div>  
 </section>
 <!-- Patient Record *ngIf="theUser" -->
-<section *ngIf="theUser" id="service" class="padding">
-  <div class="container">    
+<section id="service" class="padding">
+  <div *ngIf="theUser" class="container">    
     <div class="row">      
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <h2 class="heading">Patient Record</h2>
@@ -273,6 +273,6 @@
       </div>    
     </div>
   </div>
-</section> 
+</section>
  
 

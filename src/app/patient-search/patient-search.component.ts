@@ -19,7 +19,7 @@ export class PatientSearchComponent implements OnInit {
 
   private error: String;
   private theUser: User;
-  private patient: Array<Object> = [];
+  private patient: Array<Object>;
 
   constructor(
     private patientService: PatientService,
@@ -39,8 +39,9 @@ export class PatientSearchComponent implements OnInit {
       .then((onePatient) => {
         this.patient = onePatient;
       })
-      .catch((error) => {
-        this.error = 'There was an error. Please, try again later';
+      .catch((err) => {
+        const apiError = err.json();
+        this.error = apiError.message;
       })
 
       // after search patient we clear the form
