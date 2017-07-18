@@ -13,7 +13,6 @@ import { User               } from '../model/user-model';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit, OnDestroy {
-
   // using ViewChild allows to reset the form ones the
   // user click the submit button
   @ViewChild('logInForm') logInForm: NgForm;
@@ -59,7 +58,9 @@ export class LoginComponent implements OnInit, OnDestroy {
       //this.user = userInfo; 
       this.theUser = new User( userInfo._id, userInfo.updated_at, userInfo.created_at, 
         userInfo.username, userInfo.fullName, userInfo.role )
-      this.displayInfo();
+      if (this.theUser) {
+        this.displayInfo();
+      }
 
       this.error = null;
       

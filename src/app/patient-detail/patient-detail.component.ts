@@ -57,7 +57,9 @@ export class PatientDetailComponent implements OnInit {
     
     // get user from the service thru the property theUser.
     this.theUser = this.loggedIn.getUserInfo();
-    this.displayInfo();
+    if (this.theUser) {
+      this.displayInfo();
+    }
 
     // GET THE PATIENT DETAILS
     this.patientService.getOnePatient(this.patientId)

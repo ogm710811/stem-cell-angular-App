@@ -28,7 +28,10 @@ export class LoggedInService {
   constructor() { }
 
   sendUserInfo(userInfo) {
-    console.log(`USER AT LOGGED IN SERVICE ${ userInfo.getFullName() }`);
+    if (userInfo) {
+      console.log(`USER AT LOGGED IN SERVICE ${ userInfo.getFullName() }`);
+    }
+    
     this.userInfoSubject.next(userInfo);
     this.theUser = userInfo;
   }

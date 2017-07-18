@@ -15,7 +15,7 @@ export class SessionService {
     this.sessionParams = '/signup';
     const theOriginalPromise = this.http.post( this.sessionUrl + this.sessionParams, 
                                                user,
-                                               { withCredentials: true }).toPromise();
+                                               /*{ withCredentials: true }*/).toPromise();
     
     const theParsedPromise = theOriginalPromise.then((result) => {
       return result.json();
@@ -28,7 +28,7 @@ export class SessionService {
     this.sessionParams = '/login';
     const theOriginalPromise = this.http.post( this.sessionUrl + this.sessionParams,
                                                credentials,
-                                               { withCredentials: true }).toPromise();
+                                             /*{ withCredentials: true }*/).toPromise();
 
     const theParsedPromise = theOriginalPromise.then((result) => {
       return result.json();
@@ -41,7 +41,7 @@ export class SessionService {
     this.sessionParams = '/logout';
     return this.http.post( this.sessionUrl + this.sessionParams,
                            {},
-                           { withCredentials: true }).toPromise()
+                           /*{ withCredentials: true }*/).toPromise()
       .then(result => result.json());
   }
 

@@ -12,7 +12,7 @@ export class PatientService {
   getPatientList() {
     this.patientParams = '/patients'
     return this.http.get( this.patientUrl + this.patientParams,
-                          { withCredentials: true})
+                          /*{ withCredentials: true}*/)
       .toPromise()
       .then(apiResponse => apiResponse.json())
   }
@@ -20,8 +20,16 @@ export class PatientService {
   getOnePatient(id) {
     this.patientParams = `/patients/${ id }`
     return this.http.get( this.patientUrl + this.patientParams,
-                          { withCredentials: true })
+                          /*{ withCredentials: true }*/)
       .toPromise()
       .then(apiResponse => apiResponse.json())
+  }
+
+  searchPatient(phoneNumber) {
+    this.patientParams = `/patients/search?phoneNumber=${ phoneNumber }`
+    return this.http.get( this.patientUrl + this.patientParams,
+                        /*{ withCredentials: true }*/)
+    .toPromise()
+    .then(apiResponse => apiResponse.json())
   }
 }     

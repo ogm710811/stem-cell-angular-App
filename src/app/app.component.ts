@@ -25,9 +25,12 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.loggedIn.userInfoSubject.subscribe(
       userInfo => {
-        this.theUser = new User( userInfo._id, userInfo.updated_at, userInfo.created_at, 
-        userInfo.username, userInfo.fullName, userInfo.role )
-        this.displayInfo();
+        if (userInfo) {
+          this.theUser = new User( userInfo._id, userInfo.updated_at, userInfo.created_at, 
+          userInfo.username, userInfo.fullName, userInfo.role )
+          this.displayInfo();
+        }
+        
       }
     )
 

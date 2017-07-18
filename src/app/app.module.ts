@@ -16,15 +16,17 @@ import { LoginComponent   } from './login/login.component';
 import { PatientListComponent   } from './patient-list/patient-list.component';
 import { PatientDetailComponent } from './patient-detail/patient-detail.component';
 import { PatientAddComponent    } from './patient-add/patient-add.component';
+import { PatientSearchComponent } from './patient-search/patient-search.component';
 
 const routes: Routes = [
   { path: '',       redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home',           component: HomeComponent },
-  { path: 'signup',         component: SignupComponent },
-  { path: 'login',          component: LoginComponent },
-  { path: 'patients',       component: PatientListComponent },
-  { path: 'patient/add',    component: PatientAddComponent },
-  { path: 'patient/:id',    component: PatientDetailComponent },
+  { path: 'home',            component: HomeComponent },
+  { path: 'signup',          component: SignupComponent },
+  { path: 'login',           component: LoginComponent },
+  { path: 'patients',        component: PatientListComponent },
+  { path: 'patients/search', component: PatientSearchComponent },
+  { path: 'patient/add',     component: PatientAddComponent },
+  { path: 'patient/:id',     component: PatientDetailComponent },
   
 ];
 @NgModule({
@@ -35,7 +37,8 @@ const routes: Routes = [
     LoginComponent,
     PatientListComponent,
     PatientDetailComponent,
-    PatientAddComponent
+    PatientAddComponent,
+    PatientSearchComponent
   ],
   imports: [
     BrowserModule,

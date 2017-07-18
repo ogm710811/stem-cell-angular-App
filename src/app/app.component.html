@@ -21,15 +21,17 @@
                   <a data-toggle="dropdown" href="#" class="dropdown-toggle">Patients</a>
                   <ul class="dropdown-menu">
                     <li><a [routerLink]="['patient/add']">Add new Patient</a></li>
-                    <li><a href="">Search For Patient</a></li>
+                    <li><a [routerLink]="['patients/search']">Search For Patient</a></li>
                   </ul>
                 </li>
                 <li *ngIf="theUser" class="dropdown">
                   <a data-toggle="dropdown" href="#" class="dropdown-toggle">Reports</a>
                   <ul class="dropdown-menu">
                     <li><a [routerLink]="['patients']">Patients</a></li>
-                    <li><a href="gallery4c.html">Treatments</a></li>
-                    <li><a href="gallery2c.html">Follow Ups</a></li>
+                    <li><a href="gallery4c.html">Patient Conditions</a></li>
+                    <li><a href="gallery4c.html">Procedures</a></li>
+                    <li><a href="gallery4c.html">Delivery Methods</a></li>
+                    <li><a href="gallery2c.html">Follow Up</a></li>
                   </ul>
                 </li>
               </ul>
