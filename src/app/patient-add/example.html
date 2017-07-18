@@ -1,0 +1,298 @@
+<section *ngIf='theUser' class="padding-bottom">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <!-- <h2 class="heading">Why Choose Us ?</h2>
+              <hr class="heading_space"> -->
+            </div>
+            <div class="col-md-12">
+              <div class="faq_wrapper">
+                <ul class="items">
+                  <li>
+                    <a data-toggle="collapse" (click)="setDisplay()" href="#collapse1">Patient Info</a>
+                    <ul class="sub-items" [style.display]="display">
+                      <li id="collapse1">
+                          <section>
+                            <div class="container appointment_wrap_new_patient padding-half">
+                              <div class="row">
+                                <div class="col-md-12">
+                                  <div class="col-md-7 col-sm-8">
+                                    
+                                    <div class="row">
+                                      <form class="callus" onSubmit="return false"  id="app_form">
+                                        <div class="row">
+                                          
+                                            <div class="col-md-12">
+                                              <div id="result" class="text-center form-group"></div>
+                                            </div>
+                                          
+                                          <div class="col-md-12">
+                                            <div class="form-group">
+                                              <input class="form-control" type="text" id="firstname" name="firstname"  placeholder="First Name" required />
+                                            </div>
+                                          </div>
+                                          <div class="col-md-12">
+                                              <div class="form-group">
+                                                <input class="form-control" type="text" id="lastname" name="lastname"  placeholder="Last Name" required />
+                                              </div>
+                                          </div>
+                                          <div class="col-md-12">
+                                              <div class="form-group">
+                                                <input type="date" class="form-control" placeholder="Birthdate" id="app_date" name="app_date" />
+                                              </div>
+                                          </div>
+                                          <div class="col-md-12">
+                                              <div class="form-group">
+                                                <input class="form-control" type="text" id="address" name="address"  placeholder="Address" required />
+                                              </div>
+                                          </div>
+                                          <div class="col-md-12">
+                                              <div class="form-group">
+                                                <input class="form-control" type="text" id="city" name="city"  placeholder="City" required />
+                                              </div>
+                                          </div>
+                                          <div class="col-md-12">
+                                              <div class="form-group">
+                                                <input class="form-control" type="text" id="zip" name="zip"  placeholder="Zip Code" required />
+                                              </div>
+                                          </div>
+                                          <div class="col-md-12">
+                                              <div class="form-group">
+                                                <input class="form-control" type="text" id="state" name="state"  placeholder="State" required />
+                                              </div>
+                                          </div>
+                                          <div class="col-md-12">
+                                            <div class="form-group">
+                                              <input class="form-control" type="text" name="phone" id="phone"  placeholder="Phone No" required />
+                                            </div>
+                                          </div>
+                                          <div class="col-md-12">
+                                            <div class="form-group">
+                                              <input class="form-control" type="email"  name="email" id="email" placeholder="Email" required />
+                                            </div>
+                                          </div>
+                                          
+                                          <div class="col-md-12">
+                                            <!-- <div class="form-group">
+                                              <textarea placeholder="Message" cols="11" id="message" name="message" required></textarea>
+                                            </div> -->
+                                            <div class="form-group">
+                                                <div class="btn-submit button3">
+                                              <input type="submit" id="btn_app_submit" value="Submit Patient Info" />
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </form>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-5 col-sm-4"> </div>
+                                </div>
+                              </div>
+                            </div>
+                          </section>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a data-toggle="collapse" (click)="setDisplay()" href="#collapse2">Medical History</a>
+                    <ul class="sub-items" [style.display]="display">
+                      <li id="collapse2">
+                        <p class="half_space">Lorem Ipsum is simply du my text of the pritin industry. Lorm Ipsum hasbeen the industry"s standardsdummy 
+                        text eversince the 1500s, when an unknown printer</p>
+                        <p>Took a galley of type and scramble it to make type specimen book. It has survived not only five centurie.</p>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a data-toggle="collapse" (click)="setDisplay()" href="#collapse3">Medical Record and Physical Examination</a>
+                    <ul class="sub-items" [style.display]="display">
+                      <li id="collapse3">
+                        <p class="half_space">Lorem Ipsum is simply du my text of the pritin industry. Lorm Ipsum hasbeen the industry"s standardsdummy 
+                        text eversince the 1500s, when an unknown printer</p>
+                        <p>Took a galley of type and scramble it to make type specimen book. It has survived not only five centurie.</p>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a data-toggle="collapse" (click)="setDisplay()" href="#collapse4">Medication List</a>
+                    <ul class="sub-items" [style.display]="display">
+                      <li id="collapse4">
+                        <p class="half_space">Lorem Ipsum is simply du my text of the pritin industry. Lorm Ipsum hasbeen the industry"s standardsdummy 
+                        text eversince the 1500s, when an unknown printer</p>
+                        <p>Took a galley of type and scramble it to make type specimen book. It has survived not only five centurie.</p>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a data-toggle="collapse" (click)="setDisplay()" href="#collapse5">Patient Condition</a>
+                    <ul class="sub-items" [style.display]="display">
+                      <li id="collapse5">
+                        <!--Pricings-->
+                      <section id="pricing">
+                          <div class="container">
+                            <div class="row">
+                              <div class="col-md-12">
+                                <h4 class="heading">Define patient condition</h4>
+                                <hr class="heading_space">
+                              </div>
+                              <div class="col-md-6 col-sm-6">
+                                <div class="price">
+                                  <div class="price_header clearfix">
+                                  <span class="pull-left">Conditions</span>
+                                  <span class="pull-right"></span>
+                                  </div>
+                                  <div class="price_body">
+                                    <form class="callus" onSubmit="return false"  id="app_form">
+                                      <ul class="pricing_feature">
+                                        <li>
+                                          <div class="checkbox">
+                                            <label><input type="checkbox" value="">CHRONIC OBSTRUCTIVE PULMONARY DISEASE</label>
+                                          </div>
+                                        </li>
+                                        <li>
+                                          <div class="checkbox">
+                                            <label><input type="checkbox" value="">ERECTILE DYSFUNCTION</label>
+                                          </div>
+                                        </li>
+                                        <li>
+                                          <div class="checkbox">
+                                            <label><input type="checkbox" value="" disabled>ORTHOPEDIC CONDITION</label>
+                                          </div>
+                                        </li>
+                                        <li>
+                                          <div class="checkbox">
+                                            <label><input type="checkbox" value="" disabled>EYES</label>
+                                          </div>
+                                        </li>
+                                        <li>
+                                          <div class="checkbox">
+                                            <label><input type="checkbox" value="" disabled>AUTO INMUNE</label>
+                                          </div>
+                                        </li>
+                                        <li>
+                                          <div class="checkbox">
+                                            <label><input type="checkbox" value="" disabled>DIABETES TYPE 2</label>
+                                          </div>
+                                        </li>
+                                        <li>
+                                          <div class="checkbox">
+                                            <label><input type="checkbox" value="" disabled>SPINAL CORD INJURY</label>
+                                          </div>
+                                        </li>
+                                        <li>
+                                          <div class="checkbox">
+                                            <label><input type="checkbox" value="" disabled>TRAUMATIC BRAIN INJURY</label>
+                                          </div>
+                                        </li>
+                                        <li>
+                                          <div class="checkbox">
+                                            <label><input type="checkbox" value="" disabled>ORTHOPEDIC CONDITION</label>
+                                          </div>
+                                        </li>
+                                      </ul>
+                                      <div class="col-md-12">
+                                          <!-- <div class="form-group">
+                                            <textarea placeholder="Message" cols="11" id="message" name="message" required></textarea>
+                                          </div> -->
+                                          <div class="form-group">
+                                              <div class="btn-submit button3">
+                                            <input type="submit" id="btn_app_submit" value="Submit Condition" />
+                                            </div>
+                                          </div>
+                                        </div>
+                                    </form>
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- <div class="col-md-6 col-sm-6">
+                                <div class="price">
+                                  <div class="price_header clearfix">
+                                  <span class="pull-left">Treatments</span>
+                                  <span class="pull-right">Price</span>
+                                  </div>
+                                  <div class="price_body">
+                                    <ul class="pricing_feature">
+                                      <li>Tummy Tuck <em>$1540</em></li>
+                                      <li>Liposuction<em>$3500</em></li>
+                                      <li>Cardiac ablation<em>$100 - $255</em></li>
+                                      <li>Trunk Liposuction<em>$280</em></li>
+                                      <li>Colonoscopy<em>$786</em></li>
+                                      <li>Heart Patient<em>$1700</em></li>
+                                      <li>Body Lift<em>$999</em></li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div> -->
+                            </div>
+                          </div>
+                        </section>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a data-toggle="collapse" (click)="setDisplay()" href="#collapse6">Standard Lab Work Result</a>
+                    <ul class="sub-items" [style.display]="display">
+                      <li id="collapse6">
+                        <p class="half_space">Lorem Ipsum is simply du my text of the pritin industry. Lorm Ipsum hasbeen the industry"s standardsdummy 
+                        text eversince the 1500s, when an unknown printer</p>
+                        <p>Took a galley of type and scramble it to make type specimen book. It has survived not only five centurie.</p>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a data-toggle="collapse" (click)="setDisplay()" href="#collapse7">Specific Test Condition</a>
+                    <ul class="sub-items" [style.display]="display">
+                      <li id="collapse7">
+                        <p class="half_space">Lorem Ipsum is simply du my text of the pritin industry. Lorm Ipsum hasbeen the industry"s standardsdummy 
+                        text eversince the 1500s, when an unknown printer</p>
+                        <p>Took a galley of type and scramble it to make type specimen book. It has survived not only five centurie.</p>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a data-toggle="collapse" (click)="setDisplay()" href="#collapse8">Informed Consent</a>
+                    <ul class="sub-items" [style.display]="display">
+                      <li id="collapse8">
+                        <p class="half_space">Lorem Ipsum is simply du my text of the pritin industry. Lorm Ipsum hasbeen the industry"s standardsdummy 
+                        text eversince the 1500s, when an unknown printer</p>
+                        <p>Took a galley of type and scramble it to make type specimen book. It has survived not only five centurie.</p>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a data-toggle="collapse" (click)="setDisplay()" href="#collapse9">Procedures</a>
+                    <ul class="sub-items" [style.display]="display">
+                      <li id="collapse9">
+                        <p class="half_space">Lorem Ipsum is simply du my text of the pritin industry. Lorm Ipsum hasbeen the industry"s standardsdummy 
+                        text eversince the 1500s, when an unknown printer</p>
+                        <p>Took a galley of type and scramble it to make type specimen book. It has survived not only five centurie.</p>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a data-toggle="collapse" (click)="setDisplay()" href="#collapse10">Stem cell delivery method</a>
+                    <ul class="sub-items" [style.display]="display">
+                      <li id="collapse10">
+                        <p class="half_space">Lorem Ipsum is simply du my text of the pritin industry. Lorm Ipsum hasbeen the industry"s standardsdummy 
+                        text eversince the 1500s, when an unknown printer</p>
+                        <p>Took a galley of type and scramble it to make type specimen book. It has survived not only five centurie.</p>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a data-toggle="collapse" (click)="setDisplay()" href="#collapse11">Follow Up</a>
+                    <ul class="sub-items" [style.display]="display">
+                      <li id="collapse11">
+                        <p class="half_space">Lorem Ipsum is simply du my text of the pritin industry. Lorm Ipsum hasbeen the industry"s standardsdummy 
+                        text eversince the 1500s, when an unknown printer</p>
+                        <p>Took a galley of type and scramble it to make type specimen book. It has survived not only five centurie.</p>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>

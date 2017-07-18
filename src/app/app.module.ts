@@ -17,6 +17,7 @@ import { PatientListComponent   } from './patient-list/patient-list.component';
 import { PatientDetailComponent } from './patient-detail/patient-detail.component';
 import { PatientAddComponent    } from './patient-add/patient-add.component';
 import { PatientSearchComponent } from './patient-search/patient-search.component';
+import { PatientInfoFormComponent } from './patient-info-form/patient-info-form.component';
 
 const routes: Routes = [
   { path: '',       redirectTo: 'home', pathMatch: 'full' },
@@ -25,7 +26,11 @@ const routes: Routes = [
   { path: 'login',           component: LoginComponent },
   { path: 'patients',        component: PatientListComponent },
   { path: 'patients/search', component: PatientSearchComponent },
-  { path: 'patient/add',     component: PatientAddComponent },
+  { path: 'patient/add',     component: PatientAddComponent,
+    children: [
+      { path: 'info', component: PatientInfoFormComponent },
+    ]
+  },
   { path: 'patient/:id',     component: PatientDetailComponent },
   
 ];
@@ -38,7 +43,8 @@ const routes: Routes = [
     PatientListComponent,
     PatientDetailComponent,
     PatientAddComponent,
-    PatientSearchComponent
+    PatientSearchComponent,
+    PatientInfoFormComponent
   ],
   imports: [
     BrowserModule,

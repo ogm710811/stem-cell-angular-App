@@ -6,230 +6,41 @@
       <div class="col-md-12">
          <h2 class="title">Patient Record Form</h2>
          <div class="page_link">
-         <a [routerLink]="['']">Home</a>
-         <i class="fa fa-long-arrow-right"></i><span>Patients</span><i class="fa fa-long-arrow-right"></i><span>Add new Patient</span>
-         </div>
+         <a [routerLink]="['']">Home</a><i class="fa fa-long-arrow-right"></i><span>Patients</span><i class="fa fa-long-arrow-right"></i><span>Add new Patient</span></div>
+          <!-- Alert if user is not logged in goes here  -->
+          <div *ngIf='!theUser' style="padding-top:50px;"  class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="alert alert-danger" style="color:white; background-color:red;">
+              <strong>Oh snap! </strong>    You are not authorize to see this page.
+            </div>
+          </div> 
       </div>
     </div>
   </div>
 </div>  
 </section>
-<!-- Record Form -->
-<!-- <section class="padding">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h2 class="heading">Clinical Information</h2>
-        <hr class="heading_space">
-      </div>
-      <div class="procedure">
-        <div class="col-md-4 col-sm-5">
-          <ul class="tabs">
-            <li class="active" rel="tab1">Patient Info</li>
-            <li rel="tab2">Medical History</li>
-            <li rel="tab3">Medical Record - Physical Examination</li>
-            <li rel="tab4">Medication List</li>
-            <li rel="tab5">Patient Condition</li>
-            <li rel="tab6">Standard Lab Work Result</li>
-            <li rel="tab7">Specific Test Condition</li>
-            <li rel="tab8">Informed Consent</li>
-            <li rel="tab9">Procedures</li>
-            <li rel="tab10">Stem cell delivery method</li>
-            <li rel="tab11">Follow Up</li>
-          </ul>
-        </div> 
-        <div class="col-md-8 col-sm-7">   
-          <div class="tab_container">
-            <h3 class="d_active tab_drawer_heading" rel="tab1">Patient Info</h3>
-            <div id="tab1" class="tab_content">
-              <div class="procedure_content">
-                <h3>Patient Info</h3>
-                
-                  Form 1 here ...
-             
-              </div>
-            </div>
-            <h3 class="tab_drawer_heading" rel="tab2">Medical History</h3>
-            <div id="tab2" class="tab_content">
-              <div class="procedure_content">
-                <h3>Medical History</h3>
-                
-                  Form 2 here ...
-             
-              </div>
-            </div>
-            <h3 class="tab_drawer_heading" rel="tab3">Medical Record and Physical Examination</h3>
-            <div id="tab3" class="tab_content">
-                <div class="procedure_content">
-                  <h3>Medical Record and Physical Examination</h3>
-                  
-                  Form 3 here ...
-              
-                </div>
-              </div> 
-            <h3 class="tab_drawer_heading" rel="tab4">Medication List</h3>
-            <div id="tab4" class="tab_content">
-                <div class="procedure_content">
-                  <h3>Medication List</h3>
-                  
-                  Form 4 here ...
-              
-                </div>
-              </div>
-            <h3 class="tab_drawer_heading" rel="tab5">Patient Condition</h3>
-            <div id="tab5" class="tab_content">
-                <div class="procedure_content">
-                  <h3>Patient Condition</h3>
-
-                  Form 5 here ...
-               
-                </div>
-              </div>
-            <h3 class="tab_drawer_heading" rel="tab6">Standard Lab Work Result</h3>
-            <div id="tab6" class="tab_content">
-                <div class="procedure_content">
-                  <h3>Standard Lab Work Result</h3>
-
-                  Form 6 here ...
-
-                </div>
-              </div>
-            <h3 class="tab_drawer_heading" rel="tab7">Specific Test Condition</h3>
-            <div id="tab7" class="tab_content">
-                <div class="procedure_content">
-                  <h3>Specific Test Condition</h3>
-                       
-                  Form 7 here ...
-
-                </div>
-              </div>
-            <h3 class="tab_drawer_heading" rel="tab8">Informed Consent</h3>
-            <div id="tab8" class="tab_content">
-                <div class="procedure_content">
-                  <h3>Informed Consent</h3>
-                  
-                  Form 8 here ...
-
-                </div>
-              </div>
-            <h3 class="tab_drawer_heading" rel="tab9">Procedures</h3>
-            <div id="tab9" class="tab_content">
-                <div class="procedure_content">
-                  <h3>Procedures</h3>
-                  
-                  Form 9 here ...
-
-                </div>
-              </div>
-            <h3 class="tab_drawer_heading" rel="tab10">Stem cell delivery method</h3>
-            <div id="tab10" class="tab_content">
-                <div class="procedure_content">
-                  <h3>Stem cell delivery method</h3>
-                  
-                  Form 10 here ...
-
-                </div>
-              </div> 
-            <h3 class="tab_drawer_heading" rel="tab11">Follow Up</h3>
-            <div id="tab11" class="tab_content">
-                <div class="procedure_content">
-                  <h3>Follow Up</h3>
-                  
-                  Form 11 here ...
-
-                </div>
-              </div>          
+<!-- Navigation Patient Form here-->
+<section *ngIf='theUser' id="gallery" class="padding-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="work-filter">
+            <ul class="text-center">
+               <li><a [routerLink]="['/info']" data-filter="all" class="active filter">Patient Info</a></li>
+               <li><a href="javascript:;" data-filter=".hod" class="filter">Medical History</a></li>
+               <li><a href="javascript:;" data-filter=".heart" class="filter">Medical Record</a></li>
+               <li><a href="javascript:;" data-filter=".skin" class="filter">Medication List</a></li>
+               <li><a href="javascript:;" data-filter=".health" class="filter">Patient Condition</a></li>
+               <li><a href="javascript:;" data-filter="all" class="filter">Standard Lab Result</a></li>
+               <li><a href="javascript:;" data-filter=".hod" class="filter">Specific Test Condition</a></li>
+               <li><a href="javascript:;" data-filter=".heart" class="filter">Informed Consent</a></li>
+               <li><a href="javascript:;" data-filter=".skin" class="filter">Procedures</a></li>
+               <li><a href="javascript:;" data-filter=".health" class="filter">Stem cell delivery method</a></li>
+               <li><a href="javascript:;" data-filter=".health" class="filter">Follow Up</a></li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section> -->
-<section class="padding-bottom">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h2 class="heading">Why Choose Us ?</h2>
-        <hr class="heading_space">
-      </div>
-      <div class="col-md-6">
-      <div class="faq_wrapper">
-        <ul class="items">
-          <li>
-            <a data-toggle="collapse" (click)="setDisplay()" href="#collapse1" >We offer lot of service in a best price</a>
-            <ul class="sub-items" [style.display]="display">
-              <li id="collapse1">
-                <p class="half_space">Lorem Ipsum is simply du my text of the pritin industry. Lorm Ipsum hasbeen the industry"s standardsdummy 
-                text eversince the 1500s, when an unknown printer</p>
-                <p>Took a galley of type and scramble it to make type specimen book. It has survived not only five centurie.</p>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a data-toggle="collapse" (click)="setDisplay()" href="#collapse2">We offer lot of service in a best price</a>
-            <ul class="sub-items" [style.display]="display">
-              <li id="collapse2">
-                <p class="half_space">Lorem Ipsum is simply du my text of the pritin industry. Lorm Ipsum hasbeen the industry"s standardsdummy 
-                text eversince the 1500s, when an unknown printer</p>
-                <p>Took a galley of type and scramble it to make type specimen book. It has survived not only five centurie.</p>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a data-toggle="collapse" (click)="setDisplay()" href="#collapse3">We offer lot of service in a best price</a>
-            <ul class="sub-items" [style.display]="display">
-              <li id="collapse3">
-                <p class="half_space">Lorem Ipsum is simply du my text of the pritin industry. Lorm Ipsum hasbeen the industry"s standardsdummy 
-                text eversince the 1500s, when an unknown printer</p>
-                <p>Took a galley of type and scramble it to make type specimen book. It has survived not only five centurie.</p>
-              </li>
-            </ul>
-          </li>
-    
-  
-
-        </ul>
-      </div>
-      </div>
-      <div class="col-md-6 index2_grid">
-        <div class="zerogrid">
-          <div class="wrap-container">
-            <div class="wrap-content clearfix">
-              <div class="col-1-2">
-                <div class="col-full">
-                  <div class="wrap-col">
-                    <div class="item-container">
-                    <a class="fancybox" href="images/index2-choose1.jpg"> 
-                      <img src="images/index2-choose1.jpg" alt="work"/> 
-                    </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-1-2">
-                <div class="col-full">
-                  <div class="wrap-col first">
-                    <div class="item-container"> 
-                      <a class="fancybox" href="images/index2-choose2.jpg" data-fancybox-group="gallery">
-                      <img src="images/index2-choose2.jpg" alt="work"/>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-full">
-                  <div class="wrap-col first">
-                    <div class="item-container"> 
-                       <a class="fancybox" href="images/index2-choose3.jpg" data-fancybox-group="gallery">
-                       <img src="images/index2-choose3.jpg" alt="work"/>
-                       </a> 
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
+<router-outlet></router-outlet>
+

@@ -1844,6 +1844,13 @@ ul.widget_links li a:hover, ul.widget_links li a:focus, ul.widget_links li.activ
 
 
 /* =================================== Appointment =================================== */
+.appointment_wrap_new_patient{
+	background-color: #F0FFFF;
+	background-size:100% 100%;
+	padding-left:3%;
+	padding-right:3%;
+}
+
 .appointment_wrap{
 	background:url(../images/appointment.jpg) no-repeat;
 	background-size:100% 100%;
