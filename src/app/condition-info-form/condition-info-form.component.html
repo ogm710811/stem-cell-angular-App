@@ -1,0 +1,82 @@
+<!--Conditions-->
+<section *ngIf='theUser' class="padding-bottom" id="pricing">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="heading">Define patient condition</h2>
+        <hr class="heading_space">
+      </div>
+      <div class="col-md-6 col-sm-6">
+        <div class="price">
+          <div class="price_header clearfix">
+          <span class="pull-left">Conditions</span>
+          <span class="pull-right"></span>
+          </div>
+          <div class="price_body">
+            <form #conditionInfoForm="ngForm" class="callus" onSubmit="return false"  id="app_form">
+              <ul class="pricing_feature">
+                <li>
+                  <div class="checkbox">
+                    <label><input type="checkbox" value="">CHRONIC OBSTRUCTIVE PULMONARY DISEASE</label>
+                  </div>
+                </li>
+                <li>
+                  <div class="checkbox">
+                    <label><input type="checkbox" value="">ERECTILE DYSFUNCTION</label>
+                  </div>
+                </li>
+                <li>
+                  <div class="checkbox">
+                    <label><input type="checkbox" value="">ORTHOPEDIC CONDITION</label>
+                  </div>
+                </li>
+                <li>
+                  <div class="checkbox">
+                    <label><input type="checkbox" value="">EYES</label>
+                  </div>
+                </li>
+                <li>
+                  <div class="checkbox">
+                    <label><input type="checkbox" value="">AUTO INMUNE</label>
+                  </div>
+                </li>
+                <li>
+                  <div class="checkbox">
+                    <label><input type="checkbox" value="">DIABETES TYPE 2</label>
+                  </div>
+                </li>
+                <li>
+                  <div class="checkbox">
+                    <label><input type="checkbox" value="">SPINAL CORD INJURY</label>
+                  </div>
+                </li>
+                <li>
+                  <div class="checkbox">
+                    <label><input type="checkbox" value="">TRAUMATIC BRAIN INJURY</label>
+                  </div>
+                </li>
+                <li>
+                  <div class="checkbox">
+                    <label><input type="checkbox" value="">ORTHOPEDIC CONDITION</label>
+                  </div>
+                </li>
+              </ul>
+              <div class="col-md-12">
+                  <!-- <div class="form-group">
+                    <textarea placeholder="Message" cols="11" id="message" name="message" required></textarea>
+                  </div> -->
+                  <div class="form-group">
+                      <div class="btn-submit button3">
+                    <input type="submit" id="btn_app_submit" value="Submit Condition" />
+                    </div>
+                  </div>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+     
+

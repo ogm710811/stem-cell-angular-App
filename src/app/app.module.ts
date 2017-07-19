@@ -18,9 +18,19 @@ import { PatientDetailComponent } from './patient-detail/patient-detail.componen
 import { PatientAddComponent    } from './patient-add/patient-add.component';
 import { PatientSearchComponent } from './patient-search/patient-search.component';
 import { PatientInfoFormComponent } from './patient-info-form/patient-info-form.component';
+import { MedicalInfoFormComponent } from './medical-info-form/medical-info-form.component';
+import { PhysicalInfoFormComponent } from './physical-info-form/physical-info-form.component';
+import { MedicationInfoFormComponent } from './medication-info-form/medication-info-form.component';
+import { ConditionInfoFormComponent } from './condition-info-form/condition-info-form.component';
+import { LabInfoFormComponent } from './lab-info-form/lab-info-form.component';
+import { TestInfoFormComponent } from './test-info-form/test-info-form.component';
+import { ConsentInfoFormComponent } from './consent-info-form/consent-info-form.component';
+import { ProcedureInfoFormComponent } from './procedure-info-form/procedure-info-form.component';
+import { MethodInfoFormComponent } from './method-info-form/method-info-form.component';
+import { FollowInfoFormComponent } from './follow-info-form/follow-info-form.component';
 
 const routes: Routes = [
-  { path: '',       redirectTo: 'home', pathMatch: 'full' },
+  { path: '',                redirectTo: 'home', pathMatch: 'full' },
   { path: 'home',            component: HomeComponent },
   { path: 'signup',          component: SignupComponent },
   { path: 'login',           component: LoginComponent },
@@ -28,7 +38,20 @@ const routes: Routes = [
   { path: 'patients/search', component: PatientSearchComponent },
   { path: 'patient/add',     component: PatientAddComponent,
     children: [
-      { path: 'info', component: PatientInfoFormComponent },
+      // in order to don't redirect to home page ( path: '' ) the first path in the 
+      // children component must have a redirect to the first children. 
+      { path: '',           redirectTo: 'info', pathMatch: 'full' },
+      { path: 'info',       component: PatientInfoFormComponent },
+      { path: 'medical',    component: MedicalInfoFormComponent },
+      { path: 'physical',   component: PhysicalInfoFormComponent },
+      { path: 'medication', component: MedicationInfoFormComponent },
+      { path: 'condition',  component: ConditionInfoFormComponent },
+      { path: 'lab',        component: LabInfoFormComponent },
+      { path: 'test',       component: TestInfoFormComponent },
+      { path: 'consent',    component: ConsentInfoFormComponent },
+      { path: 'procedure',  component: ProcedureInfoFormComponent },
+      { path: 'method',     component: MethodInfoFormComponent },
+      { path: 'follow',     component: FollowInfoFormComponent },
     ]
   },
   { path: 'patient/:id',     component: PatientDetailComponent },
@@ -44,7 +67,17 @@ const routes: Routes = [
     PatientDetailComponent,
     PatientAddComponent,
     PatientSearchComponent,
-    PatientInfoFormComponent
+    PatientInfoFormComponent,
+    MedicalInfoFormComponent,
+    PhysicalInfoFormComponent,
+    MedicationInfoFormComponent,
+    ConditionInfoFormComponent,
+    LabInfoFormComponent,
+    TestInfoFormComponent,
+    ConsentInfoFormComponent,
+    ProcedureInfoFormComponent,
+    MethodInfoFormComponent,
+    FollowInfoFormComponent,
   ],
   imports: [
     BrowserModule,

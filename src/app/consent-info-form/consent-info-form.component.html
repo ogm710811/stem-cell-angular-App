@@ -1,0 +1,22 @@
+<section *ngIf='theUser' class="padding-bottom">
+  <div class="container">
+    <div class="row">
+      <form #consentInfoForm="ngForm" class="callus" onSubmit="return false"  id="app_form">
+        <div class="col-md-12">
+          <h2 class="heading">Informed Consent</h2> 
+          <hr class="heading_space">  
+        </div>
+        <div class="col-md-12">
+           <div class="form-group">
+            <textarea placeholder="Informed Consent" cols="20" id="medical" name="medical" required></textarea>
+          </div> 
+          <div class="form-group">
+              <div class="btn-submit button3">
+            <input type="submit" id="btn_app_submit" value="Submit Informed Consent" />
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

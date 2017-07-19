@@ -24,19 +24,19 @@
       <div class="row">
         <div class="col-md-12">
           <div class="work-filter">
-            <ul class="text-center">
-               <li><a [routerLink]="['/info']" data-filter="all" class="active filter">Patient Info</a></li>
-               <li><a href="javascript:;" data-filter=".hod" class="filter">Medical History</a></li>
-               <li><a href="javascript:;" data-filter=".heart" class="filter">Medical Record</a></li>
-               <li><a href="javascript:;" data-filter=".skin" class="filter">Medication List</a></li>
-               <li><a href="javascript:;" data-filter=".health" class="filter">Patient Condition</a></li>
-               <li><a href="javascript:;" data-filter="all" class="filter">Standard Lab Result</a></li>
-               <li><a href="javascript:;" data-filter=".hod" class="filter">Specific Test Condition</a></li>
-               <li><a href="javascript:;" data-filter=".heart" class="filter">Informed Consent</a></li>
-               <li><a href="javascript:;" data-filter=".skin" class="filter">Procedures</a></li>
-               <li><a href="javascript:;" data-filter=".health" class="filter">Stem cell delivery method</a></li>
-               <li><a href="javascript:;" data-filter=".health" class="filter">Follow Up</a></li>
-            </ul>
+            <ol class="text-center">
+               <li><a [routerLink] = "['info']" data-filter="all" class="filter">1. Patient Info</a></li>
+               <li><a [routerLink] = "['medical']" data-filter=".hod" class="filter">2. Medical History</a></li>
+               <li><a [routerLink] = "['physical']" data-filter=".heart" class="filter">3. Physical Examination</a></li>
+               <li><a [routerLink] = "['medication']" data-filter=".skin" class="filter">4. Medication List</a></li>
+               <li><a [routerLink] = "['condition']" data-filter=".health" class="filter">5. Patient Condition</a></li>
+               <li><a [routerLink] = "['lab']" data-filter="all" class="filter">6. Standard Lab Result</a></li>
+               <li><a [routerLink] = "['test']" data-filter=".hod" class="filter">7. Specific Test Condition</a></li>
+               <li><a [routerLink] = "['consent']" data-filter=".heart" class="filter">8. Informed Consent</a></li>
+               <li><a [routerLink] = "['procedure']" data-filter=".skin" class="filter">9. Procedures</a></li>
+               <li><a [routerLink] = "['method']" data-filter=".health" class="filter">10. Stem cell delivery method</a></li>
+               <li><a [routerLink] = "['follow']" data-filter=".health" class="filter">11. Follow Up</a></li>
+            </ol>
           </div>
         </div>
       </div>

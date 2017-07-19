@@ -6,15 +6,16 @@ import { LoggedInService   } from '../services/logged-in.service';
 import { NgForm             } from '@angular/forms';
 
 import { User              } from '../model/user-model';
+
 @Component({
-  selector: 'app-patient-add',
-  templateUrl: './patient-add.component.html',
-  styleUrls: ['./patient-add.component.css']
+  selector: 'app-medication-info-form',
+  templateUrl: './medication-info-form.component.html',
+  styleUrls: ['./medication-info-form.component.css']
 })
-export class PatientAddComponent implements OnInit {
+export class MedicationInfoFormComponent implements OnInit {
   // using ViewChild allows to reset the form ones the
   // user click the submit button
-  @ViewChild('searchForm') searchForm: NgForm;
+  @ViewChild('medicationInfoForm') medicationInfoForm: NgForm;
 
   private error: String;
   private theUser: User;
@@ -34,6 +35,7 @@ export class PatientAddComponent implements OnInit {
   }
 
   displayInfo() {
-    console.log(`USER AT ADD PATIENT PAGE => ${ this.theUser.getFullName() }`);
+    console.log(`USER AT PHYSICAL INFO COMPONENT => ${ this.theUser.getFullName() }`);
   }
+
 }
