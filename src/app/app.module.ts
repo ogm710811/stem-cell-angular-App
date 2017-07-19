@@ -28,15 +28,17 @@ import { ConsentInfoFormComponent } from './consent-info-form/consent-info-form.
 import { ProcedureInfoFormComponent } from './procedure-info-form/procedure-info-form.component';
 import { MethodInfoFormComponent } from './method-info-form/method-info-form.component';
 import { FollowInfoFormComponent } from './follow-info-form/follow-info-form.component';
+import { PatientConditionReportComponent } from './patient-condition-report/patient-condition-report.component';
 
 const routes: Routes = [
   { path: '',                redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home',            component: HomeComponent },
-  { path: 'signup',          component: SignupComponent },
-  { path: 'login',           component: LoginComponent },
-  { path: 'patients',        component: PatientListComponent },
-  { path: 'patients/search', component: PatientSearchComponent },
-  { path: 'patient/add',     component: PatientAddComponent,
+  { path: 'home',               component: HomeComponent },
+  { path: 'signup',             component: SignupComponent },
+  { path: 'login',              component: LoginComponent },
+  { path: 'patients',           component: PatientListComponent },
+  { path: 'patients/condition', component: PatientConditionReportComponent },
+  { path: 'patients/search',    component: PatientSearchComponent },
+  { path: 'patient/add',        component: PatientAddComponent,
     children: [
       // in order to don't redirect to home page ( path: '' ) the first path in the 
       // children component must have a redirect to the first children. 
@@ -78,6 +80,7 @@ const routes: Routes = [
     ProcedureInfoFormComponent,
     MethodInfoFormComponent,
     FollowInfoFormComponent,
+    PatientConditionReportComponent,
   ],
   imports: [
     BrowserModule,

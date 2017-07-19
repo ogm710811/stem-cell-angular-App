@@ -48,7 +48,7 @@ export class SignupComponent implements OnInit {
       // this use the LoggedInService thru a Subject Object to 
       // send the user information once he is signed up.
       // user info will be used for others components
-      this.loggedIn.sendUserInfo(this.theUser);
+      this.loggedIn.loggedIn(this.theUser);
 
       // after pass the user info we clear the form
       // using the ViewChild

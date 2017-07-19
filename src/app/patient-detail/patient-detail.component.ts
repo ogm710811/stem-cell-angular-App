@@ -17,6 +17,7 @@ export class PatientDetailComponent implements OnInit {
   private patient: Array<Object> = [];
   private error: String;
   private theUser: User;
+  private isLoggedIn: boolean = false;
   private conditions: Object = {
     'COPD' : 'CHRONIC OBSTRUCTIVE PULMONARY DISEASE',
     'ED'   : 'ERECTILE DYSFUNCTION',
@@ -58,9 +59,12 @@ export class PatientDetailComponent implements OnInit {
     
     // get user from the service thru the property theUser.
     this.theUser = this.loggedIn.getUserInfo();
-    if (this.theUser) {
-      this.displayInfo();
-    }
+      
+    // subscribe the user in the loggedIn service
+    this.loggedIn.loggedIn$.subscribe((userFromApi) => {
+      this.isLoggedIn = true;
+      console.log(`IS_LOGGED_IN ADD PATIENT PAGE => ${ this.isLoggedIn }`);
+    });
 
     // GET THE PATIENT DETAILS
     this.patientService.getOnePatient(this.patientId)
@@ -97,8 +101,5 @@ export class PatientDetailComponent implements OnInit {
       }      
     }
   }
-
-  displayInfo() {
-    console.log(`USER AT PATIENT DETAILS PAGE => ${ this.theUser.getFullName() }`);
-  }
+  
 } // ends class

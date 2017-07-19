@@ -14,6 +14,7 @@ import { User               } from './model/user-model';
 export class AppComponent implements OnInit {
   private theUser: User;
   private error: String;
+  isLoggedIn: boolean = false;
   
 
   constructor(
@@ -23,22 +24,19 @@ export class AppComponent implements OnInit {
   ){}
 
   ngOnInit() {
-    this.loggedIn.userInfoSubject.subscribe(
-      userInfo => {
-        if (userInfo) {
-          this.theUser = new User( userInfo._id, userInfo.updated_at, userInfo.created_at, 
-          userInfo.username, userInfo.fullName, userInfo.role )
-          this.displayInfo();
-        }
-        
-      }
-    )
+    this.loggedIn.loggedIn$.subscribe((userFromApi) => {
+      this.isLoggedIn = true;
+    });
 
-      // this use the LoggedInService thru a Subject Object to 
-      // send the user information once he is logged in.
-      // user info will be used for others components
-      //this.loggedIn.sendUserInfo(this.user);
-      this.loggedIn.sendUserInfo(this.theUser);
+
+    this.session.isLoggedIn()
+    .then((userInfo) => {
+      this.isLoggedIn = true;
+      this.loggedIn.setUserInfo(userInfo);
+    })
+    .catch((err) => {
+      this.router.navigate(['/']);
+    });
   }
  logout() {
     this.session.logout()
@@ -49,7 +47,9 @@ export class AppComponent implements OnInit {
       // this use the LoggedInService to 
       // send the user information once he is logged out.
       // user info will be used for others components
-      this.loggedIn.sendUserInfo(this.theUser);
+      //this.loggedIn.loggedIn(this.theUser);
+      this.loggedIn.loggedIn(this.theUser);
+      this.isLoggedIn = false;
     })
     .catch(err => this.error = err);
 

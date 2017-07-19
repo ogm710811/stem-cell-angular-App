@@ -10,44 +10,40 @@ export class PatientService {
   constructor( private http: Http ) { }
 
   getPatientList() {
-    const headers: Headers = new Headers();
-    headers.append('Access-Control-Allow-Origin', 'http://localhost:4200');
-    const opts: RequestOptions = new RequestOptions();
-    opts.headers = headers;
-
     this.patientParams = '/patients'
     return this.http.get( this.patientUrl + this.patientParams,
-                          /*{ withCredentials: true}*/
-                        opts)
+                          { withCredentials: true }
+                        )
       .toPromise()
       .then(apiResponse => apiResponse.json())
   }
   
   getOnePatient(id) {
-    const headers: Headers = new Headers();
-    headers.append('Access-Control-Allow-Origin', 'http://localhost:4200');
-    const opts: RequestOptions = new RequestOptions();
-    opts.headers = headers;
-
     this.patientParams = `/patients/${ id }`
     return this.http.get( this.patientUrl + this.patientParams,
-                          /*{ withCredentials: true }*/
-                        opts)
+                          { withCredentials: true }
+                        )
       .toPromise()
       .then(apiResponse => apiResponse.json())
   }
 
   searchPatient(phoneNumber) {
-    const headers: Headers = new Headers();
-    headers.append('Access-Control-Allow-Origin', 'http://localhost:4200');
-    const opts: RequestOptions = new RequestOptions();
-    opts.headers = headers;
-
     this.patientParams = `/patients/search?phoneNumber=${ phoneNumber }`
     return this.http.get( this.patientUrl + this.patientParams,
-                        /*{ withCredentials: true }*/
-                      opts)
+                        { withCredentials: true }
+                        )
     .toPromise()
     .then(apiResponse => apiResponse.json())
   }
-}     
+
+  addNewPatient(patient) {
+    this.patientParams = `/patients`
+    console.log(`PATIENT AT SERVICE => ${ patient.firstName } ${ patient.lastName } `)
+    return this.http.post( this.patientUrl + this.patientParams,
+                          patient,
+                        { withCredentials: true }
+                        )
+    .toPromise()
+    .then(apiResponse => apiResponse.json())
+  }
+}

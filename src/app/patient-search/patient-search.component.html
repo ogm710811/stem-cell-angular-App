@@ -81,261 +81,36 @@
   </div>
 </section>
 
-<!-- Patient Record *ngIf="theUser" -->
-<section *ngIf="theUser" id="service" class="padding">
-  <div *ngIf="patient" class="container">    
-    <div class="row">      
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <h2 class="heading">Patient Record</h2>
-        <hr class="heading_space">
-        <div class="service_wrapper">          
-            <div class="panel-group" id="accordion">
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title">
-                    <a data-toggle="collapse"  href="#collapse1"><h4 style="color:red;">Patient Info</h4></a>
-                  </h4>
-                </div>
-                <div id="collapse1" class="panel-collapse collapse in">
-                  <div class="panel-body">
-                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                      <div class="table-responsive">
-                        <table class="table table-hover">
-                          <tbody>
-                            <tr>
-                              <td><h5 style="font-weight:900;">First Name:</h5></td>
-                              <td>{{ patient['firstName'] }}</td>
-                            </tr>
-                            <tr>
-                              <td><h5 style="font-weight:900;">Last Name:</h5></td>
-                              <td>{{ patient['lastName'] }}</td>
-                            </tr>
-                            <tr>
-                              <td><h5 style="font-weight:900;">Birthday:</h5></td>
-                              <td>{{ patient['birthDate'] | date:'medium' }}</td>
-                            </tr>
-                            <tr>
-                              <td><h5 style="font-weight:900;">Address:</h5></td>
-                              <td>{{ patient.address[0] }}  {{ patient.address[1] }}  {{ patient.address[2] }}  {{ patient.address[3] }}</td>
-                            </tr>
-                            <tr>
-                              <td><h5 style="font-weight:900;">Email:</h5></td>
-                              <td>{{ patient['email'] }}</td>
-                            </tr>
-                            <tr>
-                              <td><h5 style="font-weight:900;">Phone Number:</h5></td>
-                              <td>{{ patient['phoneNumber'] }} </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 accordion-image">
-                      <img src="../../assets/images/service-doctor.jpg" class="img-responsive">
-                      <div class="image_caption" style="background-color:#0798bc; width: 300px; text-align: center; color:white; height:80px;">
-                      <h4 style="padding-top:15px;">{{ patient.firstName }} {{ patient.lastName }}</h4>
-                      <small>Admission Date: {{ patient.created_at | date:'medium' }}</small>
-                      </div> 
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title">
-                    <a data-toggle="collapse"  href="#collapse2"><h4 style="color:red;">Patient Medical History</h4></a>
-                  </h4>
-                </div>
-                <div id="collapse2" class="panel-collapse collapse">
-                  <div class="panel-body">
-                    Medical events and problems a person has experienced. 
-                    It is an important tool in the management of the patient. 
-                  </div>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title">
-                    <a data-toggle="collapse"  href="#collapse3"><h4 style="color:red;">Previous Medical Record and Physical Examination</h4></a>
-                  </h4>
-                </div>
-                <div id="collapse3" class="panel-collapse collapse">
-                  <div class="panel-body">
-                    Previous information concerning to a patient and his or her health care. (Rx and Labs). 
-                    The prior medical record may contain sufficient, accurate information to identify the patient,
-                    support the diagnosis, and justify the treatment.
-                  </div>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title">
-                    <a data-toggle="collapse"  href="#collapse4"><h4 style="color:red;">Medication List</h4></a>
-                  </h4>
-                </div>
-                <div id="collapse4" class="panel-collapse collapse">
-                  <div class="panel-body">
-                    In this phase the Doctor collect information about the current medication the patient is taken.
-                  </div>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title">
-                    <a data-toggle="collapse"  href="#collapse5"><h4 style="color:red;">Patient Condition</h4></a>
-                  </h4>
-                </div>
-                <div id="collapse5" class="panel-collapse collapse">
-                  <div class="panel-body">
-                    <div class="alert alert-warning" role="alert"><span style="color:red">Procedure Applied:</span>  {{ patientCondition }}</div>
-                    <br>
-                    The most important phase in the protocol of collecting information. 
-                    In this phase physicians will identify the patient condition they are going to treat. 
-                    The condition is going to define the protocol of actions to apply to the patient later on.
-                  </div>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title">
-                    <a data-toggle="collapse"  href="#collapse6"><h4 style="color:red;">Standard Lab Work Result</h4></a>
-                  </h4>
-                </div>
-                <div id="collapse6" class="panel-collapse collapse">
-                  <div class="panel-body">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                  </div>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title">
-                    <a data-toggle="collapse"  href="#collapse7"><h4 style="color:red;">Specific Test Condition</h4></a>
-                  </h4>
-                </div>
-                <div id="collapse7" class="panel-collapse collapse">
-                  <div class="panel-body">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                  </div>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title">
-                    <a data-toggle="collapse"  href="#collapse8"><h4 style="color:red;">Informed Consent</h4></a>
-                  </h4>
-                </div>
-                <div id="collapse8" class="panel-collapse collapse">
-                  <div class="panel-body">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                  </div>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title">
-                    <a data-toggle="collapse"  href="#collapse9"><h4 style="color:red;">Procedures</h4></a>
-                  </h4>
-                </div>
-                <div id="collapse9" class="panel-collapse collapse">
-                  <div class="panel-body">
-                    <div class="alert alert-warning" role="alert"><span style="color:red">Procedure Applied:</span>  {{ patient.procedure | uppercase }}</div>
-                    <br>
-                    Type of procedures to apply to a patient. The procedure to apply is
-                    related with the patient condition. Could be both. Those procedures
-                    are the sources of stem cells.
-                  </div>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title">
-                    <a data-toggle="collapse"  href="#collapse10"><h4 style="color:red;">Stem cell delivery method</h4></a>
-                  </h4>
-                </div>
-                <div id="collapse10" class="panel-collapse collapse">
-                  <div class="panel-body">
-                    <div class="alert alert-warning" role="alert"><span style="color:red">Delivery Method:</span>  {{ deliveryMethod | uppercase }}</div>
-                    <br>
-                    <p>
-                      It is a requirement for the application protocol of collecting data that health care providers must take 
-                      a picture before and after where is applied the localized delivery method.
-                    </p>
-                    <br>
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                      <div class="zerogrid">
-                        <div class="wrap-container">
-                          <div class="wrap-content clearfix">
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                              <div class="work-item facilities heading_space"> 
-                              <div class="wrap-col">
-                                <div class="item-container">
-                                  <div class="image">
-                                    <img src="../../assets/images/gallery1.jpg" alt="work"/>
-                                    <div class="overlay">
-                                      <div class="overlay-inner">
-                                        <a class="fancybox icon" href="../../assets/images/gallery1.jpg" data-fancybox-group="gallery"><i class=" icon-eye6"></i></a>
-                                      </div>
-                                    </div>
-                                  </div> 
-                                  <div class="gallery_content">
-                                    <h3>Picture Before</h3>
-                                    <p>Date: {{ patient.created_at | date:'medium' }}</p>
-                                  </div>
-                                </div>
-                              </div>
-                              </div>
-                            </div>                              
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">                                
-                              <div class="work-item technolog heading_space">
-                                <div class="wrap-col">
-                                  <div class="item-container">
-                                    <div class="image">
-                                      <img src="../../assets/images/galler2.jpg" alt="work"/>
-                                      <div class="overlay">
-                                        <div class="overlay-inner">
-                                          <a class="fancybox icon" href="../../assets/images/gallery1.jpg" data-fancybox-group="gallery"><i class=" icon-eye6"></i></a>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="gallery_content">
-                                      <h3>Picture After</h3>
-                                      <p>Date: {{ patient.created_at | date:'medium' }}</p>
-                                    </div> 
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title">
-                    <a data-toggle="collapse"  href="#collapse11"><h4 style="color:red;">Follow up</h4></a>
-                  </h4>
-                </div>
-                <div id="collapse11" class="panel-collapse collapse">
-                  <div class="panel-body">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
-                </div>
-              </div>
-            </div>         
-        </div>        
-      </div>    
+<!-- Patient Record Display -->
+<div class="container">
+  <hr>
+  <br>
+	<div class="row">
+    <div *ngIf="patient" class="col-md-12">
+      <div class="table-responsive">
+          <table id="mytable" class="table table-bordred table-striped">
+            <thead>
+              <th>FIRST NAME</th>
+              <th>LAST NAME</th>
+              <th>BIRTHDAY</th>
+              <th>EMAIL</th>
+              <th>PHONE NUMBER</th>
+              <th>DETAILS</th>
+            </thead>
+            <br>
+            <tbody>    
+              <tr>
+                <td>{{ patient.firstName }}</td>
+                <td>{{ patient.lastName }}</td>
+                <td>{{ patient.birthDate | date:'longDate' }}</td>
+                <td>{{ patient.email }}</td>
+                <td>{{ patient.phoneNumber }}</td>
+                <td><p data-placement="top" data-toggle="tooltip" title="Update"><button class="btn btn-primary btn-xs" data-title="Update"><span class="glyphicon glyphicon-pencil"></span></button></p></td> 
+              </tr>
+            </tbody>        
+          </table>
+          <div class="clearfix"></div>
+        </div>
     </div>
-  </div>
-</section>
-
+	</div>
+</div>

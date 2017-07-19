@@ -17,18 +17,18 @@
                    <a [routerLink]="['home']" style="margin-left:60px;">Home</a>
                 </li>
                                 
-                <li *ngIf="theUser" class="dropdown">
+                <li *ngIf="isLoggedIn" class="dropdown">
                   <a data-toggle="dropdown" href="#" class="dropdown-toggle">Patients</a>
                   <ul class="dropdown-menu">
                     <li><a [routerLink]="['patient/add']">Add new Patient</a></li>
                     <li><a [routerLink]="['patients/search']">Search For Patient</a></li>
                   </ul>
                 </li>
-                <li *ngIf="theUser" class="dropdown">
+                <li *ngIf="isLoggedIn" class="dropdown">
                   <a data-toggle="dropdown" href="#" class="dropdown-toggle">Reports</a>
                   <ul class="dropdown-menu">
                     <li><a [routerLink]="['patients']">Patients</a></li>
-                    <li><a href="gallery4c.html">Patient Conditions</a></li>
+                    <li><a [routerLink]="['patients/condition']">Patient Conditions</a></li>
                     <li><a href="gallery4c.html">Procedures</a></li>
                     <li><a href="gallery4c.html">Delivery Methods</a></li>
                     <li><a href="gallery2c.html">Follow Up</a></li>
@@ -36,9 +36,9 @@
                 </li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
-                <li *ngIf="!theUser" ><a [routerLink]="['login']"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
-                <li *ngIf="theUser" (click)="logout()"><a style="cursor:pointer;"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
-                <li *ngIf="!theUser"><a [routerLink]="['signup']"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li *ngIf="!isLoggedIn" ><a [routerLink]="['login']"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
+                <li *ngIf="isLoggedIn" (click)="logout()"><a style="cursor:pointer;"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+                <li *ngIf="!isLoggedIn"><a [routerLink]="['signup']"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
               </ul>
             </div>
           </nav>

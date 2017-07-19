@@ -12,18 +12,13 @@ export class SessionService {
   constructor( private http: Http ) { }
 
   signup (user) {
-    const headers: Headers = new Headers();
-    headers.append('Access-Control-Allow-Origin', 'http://localhost:4200');
-    const opts: RequestOptions = new RequestOptions();
-    opts.headers = headers;
-
     this.sessionParams = '/signup';
     const theOriginalPromise = this.http.post( this.sessionUrl + this.sessionParams, 
                                                user,
-                                               /*{ withCredentials: true }*/
-                                              opts).toPromise();
+                                               { withCredentials: true }
+                                              ).toPromise();
     
-    const theParsedPromise = theOriginalPromise.then((result) => {
+      const theParsedPromise = theOriginalPromise.then((result) => {
       return result.json();
     });
     
@@ -31,18 +26,13 @@ export class SessionService {
   }
 
   login (credentials) {
-    const headers: Headers = new Headers();
-    headers.append('Access-Control-Allow-Origin', 'http://localhost:4200');
-    const opts: RequestOptions = new RequestOptions();
-    opts.headers = headers;
+      this.sessionParams = '/login';
+      const theOriginalPromise = this.http.post( this.sessionUrl + this.sessionParams,
+                                                credentials,
+                                                { withCredentials: true },
+                                                ).toPromise();
 
-    this.sessionParams = '/login';
-    const theOriginalPromise = this.http.post( this.sessionUrl + this.sessionParams,
-                                               credentials,
-                                             /*{ withCredentials: true },*/
-                                            opts).toPromise();
-
-    const theParsedPromise = theOriginalPromise.then((result) => {
+      const theParsedPromise = theOriginalPromise.then((result) => {
       return result.json();
     });
 
@@ -50,31 +40,29 @@ export class SessionService {
   }
 
   logout () {
-    const headers: Headers = new Headers();
-    headers.append('Access-Control-Allow-Origin', 'http://localhost:4200');
-    const opts: RequestOptions = new RequestOptions();
-    opts.headers = headers;
-
     this.sessionParams = '/logout';
     return this.http.post( this.sessionUrl + this.sessionParams,
                            {},
-                           /*{ withCredentials: true }*/
-                          opts)
-      .toPromise()
-      .then(result => result.json());
+                           { withCredentials: true }
+                          )
+    .toPromise()
+    .then(result => result.json());
   }
 
   isLoggedIn () {
-    const headers: Headers = new Headers();
-    headers.append('Access-Control-Allow-Origin', 'http://localhost:4200');
-    const opts: RequestOptions = new RequestOptions();
-    opts.headers = headers;
-
     this.sessionParams = '/loggedin';
     return this.http.get( this.sessionUrl + this.sessionParams,
-                          /*{ withCredentials: true }*/
-                          opts)
-      .toPromise()
-      .then(result => result.json());
+                          { withCredentials: true }
+                          )
+    .toPromise()
+    .then(result => result.json());
   }
+
+
+  //***************************** */
+  // const headers: Headers = new Headers();  
+  // headers.append('Access-Control-Allow-Origin', 'http://localhost:4200');      
+  // const opts: RequestOptions = new RequestOptions();      
+  // opts.headers = headers;  
+  // then use opts in the request as parameter
 }

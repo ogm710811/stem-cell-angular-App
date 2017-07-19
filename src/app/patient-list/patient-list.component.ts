@@ -39,14 +39,16 @@ export class PatientListComponent implements OnInit {
 
     // get user from the service thru the property theUser.
     this.theUser = this.loggedIn.getUserInfo();
-    this.displayInfo();
+    
+    // subscribe the user in the loggedIn service
+    this.loggedIn.loggedIn$.subscribe((userFromApi) => {
+      this.isLoggedIn = true;
+      console.log(`IS_LOGGED_IN ADD PATIENT PAGE => ${ this.isLoggedIn }`);
+    });
   }
 
   viewDetails(id) {
     this.router.navigate(['patient', id]);
   }
 
-  displayInfo() {
-    console.log(`USER AT PATIENT LIST PAGE => ${ this.theUser.getFullName() }`);
-  }
 }

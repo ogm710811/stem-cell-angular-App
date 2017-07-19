@@ -20,6 +20,7 @@ export class PatientSearchComponent implements OnInit {
   private error: String;
   private theUser: User;
   private patient: Array<Object>;
+  private isLoggedIn: boolean = false;
 
   constructor(
     private patientService: PatientService,
@@ -29,9 +30,12 @@ export class PatientSearchComponent implements OnInit {
   ngOnInit() {
     // get user from the service thru the property theUser.
     this.theUser = this.loggedIn.getUserInfo();
-    if (this.theUser) {
-      this.displayInfo();
-    }
+    
+    // subscribe the user in the loggedIn service
+    this.loggedIn.loggedIn$.subscribe((userFromApi) => {
+      this.isLoggedIn = true;
+      console.log(`IS_LOGGED_IN ADD PATIENT PAGE => ${ this.isLoggedIn }`);
+    });
   }
 
   searchPatient(phoneNumber){
@@ -47,10 +51,6 @@ export class PatientSearchComponent implements OnInit {
       // after search patient we clear the form
       // using the ViewChild
       this.searchForm.reset();
-  }
-
-  displayInfo() {
-    console.log(`USER AT PATIENT SEARCH PAGE => ${ this.theUser.getFullName() }`);
   }
 
 }
