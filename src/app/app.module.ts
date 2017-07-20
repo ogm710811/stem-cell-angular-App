@@ -13,23 +13,24 @@ import { AppComponent     } from './app.component';
 import { HomeComponent    } from './home/home.component';
 import { SignupComponent  } from './signup/signup.component';
 import { LoginComponent   } from './login/login.component';
-import { PatientListComponent   } from './patient-list/patient-list.component';
-import { PatientDetailComponent } from './patient-detail/patient-detail.component';
-import { PatientAddComponent    } from './patient-add/patient-add.component';
-import { PatientSearchComponent } from './patient-search/patient-search.component';
-import { PatientInfoFormComponent } from './patient-info-form/patient-info-form.component';
-import { MedicalInfoFormComponent } from './medical-info-form/medical-info-form.component';
-import { PhysicalInfoFormComponent } from './physical-info-form/physical-info-form.component';
+import { PatientListComponent        } from './patient-list/patient-list.component';
+import { PatientDetailComponent      } from './patient-detail/patient-detail.component';
+import { PatientAddComponent         } from './patient-add/patient-add.component';
+import { PatientSearchComponent      } from './patient-search/patient-search.component';
+import { PatientInfoFormComponent    } from './patient-info-form/patient-info-form.component';
+import { MedicalInfoFormComponent    } from './medical-info-form/medical-info-form.component';
+import { PhysicalInfoFormComponent   } from './physical-info-form/physical-info-form.component';
 import { MedicationInfoFormComponent } from './medication-info-form/medication-info-form.component';
-import { ConditionInfoFormComponent } from './condition-info-form/condition-info-form.component';
-import { LabInfoFormComponent } from './lab-info-form/lab-info-form.component';
-import { TestInfoFormComponent } from './test-info-form/test-info-form.component';
-import { ConsentInfoFormComponent } from './consent-info-form/consent-info-form.component';
-import { ProcedureInfoFormComponent } from './procedure-info-form/procedure-info-form.component';
-import { MethodInfoFormComponent } from './method-info-form/method-info-form.component';
-import { FollowInfoFormComponent } from './follow-info-form/follow-info-form.component';
+import { ConditionInfoFormComponent  } from './condition-info-form/condition-info-form.component';
+import { LabInfoFormComponent        } from './lab-info-form/lab-info-form.component';
+import { TestInfoFormComponent       } from './test-info-form/test-info-form.component';
+import { ConsentInfoFormComponent    } from './consent-info-form/consent-info-form.component';
+import { ProcedureInfoFormComponent  } from './procedure-info-form/procedure-info-form.component';
+import { MethodInfoFormComponent     } from './method-info-form/method-info-form.component';
+import { FollowInfoFormComponent     } from './follow-info-form/follow-info-form.component';
 import { PatientConditionReportComponent } from './patient-condition-report/patient-condition-report.component';
 import { PatientProcedureReportComponent } from './patient-procedure-report/patient-procedure-report.component';
+import { PatientMethodReportComponent    } from './patient-method-report/patient-method-report.component';
 
 const routes: Routes = [
   { path: '',                redirectTo: 'home', pathMatch: 'full' },
@@ -39,6 +40,7 @@ const routes: Routes = [
   { path: 'patients',           component: PatientListComponent },
   { path: 'patients/condition', component: PatientConditionReportComponent },
   { path: 'patients/procedure', component: PatientProcedureReportComponent },
+  { path: 'patients/method',    component: PatientMethodReportComponent },
   { path: 'patients/search',    component: PatientSearchComponent },
   { path: 'patient/add',        component: PatientAddComponent,
     children: [
@@ -84,6 +86,7 @@ const routes: Routes = [
     FollowInfoFormComponent,
     PatientConditionReportComponent,
     PatientProcedureReportComponent,
+    PatientMethodReportComponent,
   ],
   imports: [
     BrowserModule,

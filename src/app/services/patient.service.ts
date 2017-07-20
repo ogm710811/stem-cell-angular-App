@@ -64,5 +64,14 @@ export class PatientService {
     .toPromise()
     .then(apiResponse => apiResponse.json());
   }
+
+  getPatientMethodList() {
+    this.patientParams = `/methods`;
+    return this.http.get( this.patientUrl + this.patientParams,
+                        { withCredentials: true }
+                        )
+    .toPromise()
+    .then(apiResponse => apiResponse.json());
+  }
   
 }
