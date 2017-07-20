@@ -14,10 +14,10 @@ import { Condition         } from '../model/patient-condition-model';
   styleUrls: ['./patient-condition-report.component.css']
 })
 export class PatientConditionReportComponent implements OnInit {
-  private patientConditions: Array<String> = [];
   private error: String;
   private theUser: User;
   private isLoggedIn: boolean = false;
+  private patientConditions: Array<String> = [];
   private patientConditionToDisplay: { 
     condition: String, code: String, numberPatient: Number
    }[];
@@ -67,9 +67,9 @@ export class PatientConditionReportComponent implements OnInit {
           { 'condition': 'SPINAL CORD INJURY'                   , 'code': 'SCI' , 'numberPatient': this.sciCount  },
           { 'condition': 'TRAUMATIC BRAIN INJURY'               , 'code': 'TBI' , 'numberPatient': this.tbiCount  },          
         ]
-        this.patientConditionToDisplay.forEach(element => {
-          console.log(`PATIENT CONDITION TO DISPLAY => ${ element.condition } + ${ element.code } + ${ element.numberPatient }`);
-        });
+        // this.patientConditionToDisplay.forEach(element => {
+        //   console.log(`PATIENT CONDITION TO DISPLAY => ${ element.condition } + ${ element.code } + ${ element.numberPatient }`);
+        // });
         
       })
       .catch((err) => {

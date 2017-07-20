@@ -55,4 +55,14 @@ export class PatientService {
     .toPromise()
     .then(apiResponse => apiResponse.json());
   }
+
+  getPatientProcedureList() {
+    this.patientParams = `/procedures`;
+    return this.http.get( this.patientUrl + this.patientParams,
+                        { withCredentials: true }
+                        )
+    .toPromise()
+    .then(apiResponse => apiResponse.json());
+  }
+  
 }

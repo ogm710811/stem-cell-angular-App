@@ -29,6 +29,7 @@ import { ProcedureInfoFormComponent } from './procedure-info-form/procedure-info
 import { MethodInfoFormComponent } from './method-info-form/method-info-form.component';
 import { FollowInfoFormComponent } from './follow-info-form/follow-info-form.component';
 import { PatientConditionReportComponent } from './patient-condition-report/patient-condition-report.component';
+import { PatientProcedureReportComponent } from './patient-procedure-report/patient-procedure-report.component';
 
 const routes: Routes = [
   { path: '',                redirectTo: 'home', pathMatch: 'full' },
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path: 'login',              component: LoginComponent },
   { path: 'patients',           component: PatientListComponent },
   { path: 'patients/condition', component: PatientConditionReportComponent },
+  { path: 'patients/procedure', component: PatientProcedureReportComponent },
   { path: 'patients/search',    component: PatientSearchComponent },
   { path: 'patient/add',        component: PatientAddComponent,
     children: [
@@ -81,6 +83,7 @@ const routes: Routes = [
     MethodInfoFormComponent,
     FollowInfoFormComponent,
     PatientConditionReportComponent,
+    PatientProcedureReportComponent,
   ],
   imports: [
     BrowserModule,

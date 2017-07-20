@@ -1,0 +1,54 @@
+<!--Page header & Title-->
+<section id="page_header">
+  <div class="page_title">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="title">Patient Procedure Report</h2>
+          <div class="page_link"><a [routerLink]="['']">Home</a><i class="fa fa-long-arrow-right"></i><span>Reports</span><i class="fa fa-long-arrow-right"></i><span>Patient Procedure Report</span></div>
+          <!-- Alert if user is not logged in goes here  -->
+          <div *ngIf='!theUser' style="padding-top:50px;"  class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="alert alert-danger" style="color:white; background-color:red;">
+              <strong>Oh snap! </strong>    You are not authorize to see this page.
+            </div>
+          </div>   
+        </div>
+      </div>
+    </div>
+  </div>  
+</section>
+<div class="container" style="margin-bottom:250px;">
+    <hr>
+    <br>
+    <div class="row">
+      <div *ngIf="theUser" class="col-md-12">
+        <div class="table-responsive">
+            <table id="mytable" class="table table-bordred table-striped">
+              <thead>
+                <th>PATIENT PROCEDURE</th>
+                <th>NUMBER OF PATIENTS</th>
+                <th>DETAILS</th>
+              </thead>
+              <br>
+              <tbody>    
+                <tr *ngFor="let procedure of patientProcedureToDisplay">
+                  <td>{{ procedure.procedure     }}</td>
+                  <td>{{ procedure.numberPatient }}</td>
+                  <td><p data-placement="top" data-toggle="tooltip" title="Details"><button (click)="viewDetails(onePatient._id)" class="btn btn-primary btn-xs" data-title="Edit"><span class="glyphicon glyphicon-pencil"></span></button></p></td> 
+                </tr>
+              </tbody>        
+            </table>
+            <div class="clearfix"></div>
+            <!-- <ul class="pagination pull-right">
+              <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+              <li class="active"><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">4</a></li>
+              <li><a href="#">5</a></li>
+              <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+            </ul> -->
+          </div>
+      </div>
+    </div>
+  </div>
