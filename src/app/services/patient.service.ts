@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions       } from '@angular/http';
+import { Subject    } from 'rxjs/Subject';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
@@ -7,7 +8,21 @@ export class PatientService {
   private patientUrl: string = 'http://localhost:3000/api.stem'
   private patientParams: string;
 
+  // This Subject Object will be use to pass information
+  // from each report component to detail report component.
+  // Each report component will pass the index of the row
+  // that was clicked to the detail report component.
+  private reportDetailSource = new Subject<any>();
+  // the report detail will subscribe to the property reportDetails$
+  reportDetails$ = this.reportDetailSource.asObservable(); 
+
   constructor( private http: Http ) { }
+
+  // this function will send the index of the row that was
+  // clicked in the report page
+  rowClicked (index) {
+    this.reportDetailSource.next(index);
+  } 
 
   getPatientList() {
     this.patientParams = '/patients'
@@ -73,5 +88,14 @@ export class PatientService {
     .toPromise()
     .then(apiResponse => apiResponse.json());
   }
-  
+
+  getPatientWithCondition(condition) {
+    this.patientParams = `/patients/search/condition?condition=${ condition }`;
+    console.log(`CONDITION REQUEST IN SERVICE => ${ condition }`)
+    return this.http.get( this.patientUrl + this.patientParams,
+      { withCredentials: true }
+      )
+    .toPromise()
+    .then(apiResponse => apiResponse.json());
+  }
 }

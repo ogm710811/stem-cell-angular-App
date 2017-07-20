@@ -92,5 +92,14 @@ filterConditions(query) {
       el.indexOf(query.toUpperCase()) > -1
     )
   }
+
+  viewDetails(index) {
+    // navigate to detail page and also this function
+    // have to pass to the destination component which
+    // method was clicked 
+    console.log(index);
+    this.patientService.rowClicked(index);
+    this.router.navigate(['patients/condition/detail']);
+  }
 }
 

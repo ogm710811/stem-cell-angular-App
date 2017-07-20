@@ -31,18 +31,20 @@ import { FollowInfoFormComponent     } from './follow-info-form/follow-info-form
 import { PatientConditionReportComponent } from './patient-condition-report/patient-condition-report.component';
 import { PatientProcedureReportComponent } from './patient-procedure-report/patient-procedure-report.component';
 import { PatientMethodReportComponent    } from './patient-method-report/patient-method-report.component';
+import { PatientConditionReportDetailComponent } from './patient-condition-report-detail/patient-condition-report-detail.component';
 
 const routes: Routes = [
   { path: '',                redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home',               component: HomeComponent },
-  { path: 'signup',             component: SignupComponent },
-  { path: 'login',              component: LoginComponent },
-  { path: 'patients',           component: PatientListComponent },
-  { path: 'patients/condition', component: PatientConditionReportComponent },
-  { path: 'patients/procedure', component: PatientProcedureReportComponent },
-  { path: 'patients/method',    component: PatientMethodReportComponent },
-  { path: 'patients/search',    component: PatientSearchComponent },
-  { path: 'patient/add',        component: PatientAddComponent,
+  { path: 'home',                       component: HomeComponent },
+  { path: 'signup',                     component: SignupComponent },
+  { path: 'login',                      component: LoginComponent },
+  { path: 'patients',                   component: PatientListComponent },
+  { path: 'patients/condition',         component: PatientConditionReportComponent },
+  { path: 'patients/condition/detail',  component: PatientConditionReportDetailComponent },
+  { path: 'patients/procedure',         component: PatientProcedureReportComponent },
+  { path: 'patients/method',            component: PatientMethodReportComponent },
+  { path: 'patients/search',            component: PatientSearchComponent },
+  { path: 'patient/add',                component: PatientAddComponent,
     children: [
       // in order to don't redirect to home page ( path: '' ) the first path in the 
       // children component must have a redirect to the first children. 
@@ -87,6 +89,7 @@ const routes: Routes = [
     PatientConditionReportComponent,
     PatientProcedureReportComponent,
     PatientMethodReportComponent,
+    PatientConditionReportDetailComponent,
   ],
   imports: [
     BrowserModule,
