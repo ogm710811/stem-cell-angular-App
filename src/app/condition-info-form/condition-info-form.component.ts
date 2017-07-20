@@ -34,7 +34,7 @@ export class ConditionInfoFormComponent implements OnInit {
     // subscribe the user in the loggedIn service
     this.loggedIn.loggedIn$.subscribe((userFromApi) => {
       this.isLoggedIn = true;
-      console.log(`IS_LOGGED_IN ADD PATIENT PAGE => ${ this.isLoggedIn }`);
+      console.log(`IS_LOGGED_IN AT CONDITION-FORM => ${ this.isLoggedIn }`);
     });
   }
 

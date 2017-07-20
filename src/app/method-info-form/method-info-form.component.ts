@@ -20,6 +20,7 @@ export class MethodInfoFormComponent implements OnInit {
   private error: String;
   private theUser: User;
   private patient: Array<Object>;
+  private isLoggedIn: boolean = false;
 
   constructor(
     private patientService: PatientService,
@@ -29,13 +30,12 @@ export class MethodInfoFormComponent implements OnInit {
   ngOnInit() {
     // get user from the service thru the property theUser.
     this.theUser = this.loggedIn.getUserInfo();
-    if (this.theUser) {
-      this.displayInfo();
-    }
-  }
 
-    displayInfo() {
-    console.log(`USER AT METHOD INFO COMPONENT => ${ this.theUser.getFullName() }`);
+    // subscribe the user in the loggedIn service
+    this.loggedIn.loggedIn$.subscribe((userFromApi) => {
+      this.isLoggedIn = true;
+      console.log(`IS_LOGGED_IN AT DELIVERY-METHOD-FORM  => ${ this.isLoggedIn }`);
+    });
   }
 
 }
