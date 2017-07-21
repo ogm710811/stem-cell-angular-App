@@ -8,6 +8,20 @@ export class PatientService {
   private patientUrl: string = 'http://localhost:3000/api.stem'
   private patientParams: string;
 
+  // property to move patient report detail conditions, procedures, and method
+  // using this as a second alternative in case the reportDetails$ fails,
+  // when the user clicks one of the row and display patient list.
+  // example => from PatientConditionReport to PatientConditionReportDetail
+  private reportDetailInfo: String;
+
+  getReportDetailInfo(): String {
+    return this.reportDetailInfo;
+  }
+
+  setReportDetailInfo( rowClicked ): void {
+    this.reportDetailInfo = rowClicked;
+  }
+
   // This Subject Object will be use to pass information
   // from each report component to detail report component.
   // Each report component will pass the index of the row
@@ -18,10 +32,11 @@ export class PatientService {
 
   constructor( private http: Http ) { }
 
-  // this function will send the index of the row that was
-  // clicked in the report page
-  rowClicked (index) {
-    this.reportDetailSource.next(index);
+  // this function will send the condition of the row that was
+  // clicked in the report page to see the patient details of
+  // that condition
+  detailClicked (rowClicked) {
+    this.reportDetailSource.next(rowClicked);
   } 
 
   getPatientList() {
@@ -51,7 +66,16 @@ export class PatientService {
     .then(apiResponse => apiResponse.json())
   }
 
-  addNewPatient(patient) {
+  searchDetailPatientCondition(condition) {
+    this.patientParams = `/patients/search/condition?condition=${ condition }`;
+    return this.http.get( this.patientUrl + this.patientParams,
+                        { withCredentials: true }
+                        )
+    .toPromise()
+    .then(apiResponse => apiResponse.json())
+  }
+
+   addNewPatient(patient) {
     this.patientParams = `/patients`;
     console.log(`PATIENT AT SERVICE => ${ patient.firstName } ${ patient.lastName } `);
     return this.http.post( this.patientUrl + this.patientParams,
@@ -89,13 +113,4 @@ export class PatientService {
     .then(apiResponse => apiResponse.json());
   }
 
-  getPatientWithCondition(condition) {
-    this.patientParams = `/patients/search/condition?condition=${ condition }`;
-    console.log(`CONDITION REQUEST IN SERVICE => ${ condition }`)
-    return this.http.get( this.patientUrl + this.patientParams,
-      { withCredentials: true }
-      )
-    .toPromise()
-    .then(apiResponse => apiResponse.json());
-  }
 }

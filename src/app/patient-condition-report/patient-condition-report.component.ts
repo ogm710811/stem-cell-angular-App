@@ -29,6 +29,7 @@ export class PatientConditionReportComponent implements OnInit {
    private dt2Count :Number;
    private sciCount :Number;
    private tbiCount :Number; 
+   private conditionPatientDetail: String;
 
   constructor(
     private patientService: PatientService,
@@ -83,7 +84,7 @@ export class PatientConditionReportComponent implements OnInit {
     // subscribe the user in the loggedIn service
     this.loggedIn.loggedIn$.subscribe((userFromApi) => {
       this.isLoggedIn = true;
-      console.log(`IS_LOGGED_IN ADD PATIENT PAGE => ${ this.isLoggedIn }`);
+      console.log(`IS_LOGGED_IN AT PATIENT REPORT CONDITION PAGE => ${ this.isLoggedIn }`);
     });
   }
 
@@ -93,13 +94,32 @@ filterConditions(query) {
     )
   }
 
-  viewDetails(index) {
-    // navigate to detail page and also this function
-    // have to pass to the destination component which
-    // method was clicked 
-    console.log(index);
-    this.patientService.rowClicked(index);
-    this.router.navigate(['patients/condition/detail']);
+  // navigate to detail page and also this function
+  // have to pass to the destination component which
+  // condition was clicked 
+  // use index to define which condition sent to the observable
+  // at patient service
+  // viewDetails(index) {
+  //   this.conditionPatientDetail = this.patientConditionToDisplay[index].code;
+    
+  //   if (this.conditionPatientDetail) {
+  //     console.log(this.conditionPatientDetail);
+  //     this.patientService.detailClicked(this.conditionPatientDetail);
+  //     this.router.navigate(['patients/condition/detail']); 
+  //   }
+  // }
+
+  //**** => FOR SOME REASON USING PROPERTIES IN A SERVICE AND SETTER AND GETTER
+  //        LOOKS MORE STABLE THAN USING OBSERVABLES
+  // same as before but using the property reportDetailInfo from the service
+  rowClickedToDetail(index) {
+    this.conditionPatientDetail = this.patientConditionToDisplay[index].code;
+
+    if (this.conditionPatientDetail) {
+      this.patientService.setReportDetailInfo(this.conditionPatientDetail);
+      //console.log(this.conditionPatientDetail);
+      this.router.navigate(['patients/condition/detail']);
+    }
   }
 }
 

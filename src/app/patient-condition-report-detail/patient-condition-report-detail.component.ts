@@ -16,10 +16,8 @@ export class PatientConditionReportDetailComponent implements OnInit {
   private error: String;
   private theUser: User;
   private isLoggedIn: boolean = false;
-  private indexClicked: number;
-  private conditions: Array<string> = ['COPD', 'ED', 'OC', 'EY', 'AI', 'DT2', 'SCI', 'TBI'];
-  private conditionClicked: string;
-  private patientWithConditions: Array<Object> = [];
+  private patients: Array<Object> = [];
+  private condition: String;
 
   constructor(
     private patientService: PatientService,
@@ -30,19 +28,34 @@ export class PatientConditionReportDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // get row clicked in condition report using observable
+    // this.patientService.reportDetails$.subscribe((condition) => {
+    //   this.condition = condition;
+    //   console.log(`CONDITION AT REPORT CONDITION DETAIL PAGE => ${ this.condition }`);
 
-    // get index of row clicked in condition report
-    this.patientService.reportDetails$.subscribe((indexClicked) => {
-      this.conditionClicked = this.conditions[indexClicked];;  
-      console.log(String(this.conditionClicked));
-    });
+    //   this.patientService.searchDetailPatientCondition(this.condition)
+    //     .then((patientConditionDetailList) => {
+    //       this.patients = patientConditionDetailList;
+    //       console.log(`PATIENT CONDITION DETAIL LIST => ${ this.patients }`)
+    //     })
+    //     .catch((err) => {
+    //       const apiError = err.json();
+    //       this.error = apiError.message;
+    //     })
+    // });
 
-    // get patient with a given condition
-    this.patientService.getPatientWithCondition('COPD')
-    .then((patientWithCondition) => {
-      this.patientWithConditions = patientWithCondition;
-      console.log(this.conditionClicked);
-    })
+    // get row clicked in condition report using property
+    this.condition = this.patientService.getReportDetailInfo()
+    //console.log(`CONDITION AT REPORT CONDITION DETAIL PAGE => ${ this.condition }`);
+    this.patientService.searchDetailPatientCondition(this.condition)
+        .then((patientConditionDetailList) => {
+          this.patients = patientConditionDetailList;
+          //console.log(`PATIENT CONDITION DETAIL LIST => ${ this.patients }`)
+        })
+        .catch((err) => {
+          const apiError = err.json();
+          this.error = apiError.message;
+        })
 
     // get user from the service thru the property theUser.
     this.theUser = this.loggedIn.getUserInfo();
@@ -50,7 +63,7 @@ export class PatientConditionReportDetailComponent implements OnInit {
     // subscribe the user in the loggedIn service
     this.loggedIn.loggedIn$.subscribe((userFromApi) => {
       this.isLoggedIn = true;
-      console.log(`IS_LOGGED_IN ADD PATIENT PAGE => ${ this.isLoggedIn }`);
+      //console.log(`IS_LOGGED_IN PATIENT REPORT CONDITION DETAIL PAGE => ${ this.isLoggedIn }`);
     });
 
     }
