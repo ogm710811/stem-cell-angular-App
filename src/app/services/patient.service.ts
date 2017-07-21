@@ -75,8 +75,17 @@ export class PatientService {
     .then(apiResponse => apiResponse.json())
   }
 
-    searchDetailPatientProcedure(procedure) {
+  searchDetailPatientProcedure(procedure) {
     this.patientParams = `/patients/search/procedure?procedure=${ procedure }`;
+    return this.http.get( this.patientUrl + this.patientParams,
+                        { withCredentials: true }
+                        )
+    .toPromise()
+    .then(apiResponse => apiResponse.json())
+  }
+
+  searchDetailPatientMethod(method) {
+    this.patientParams = `/patients/search/method?method=${ method }`;
     return this.http.get( this.patientUrl + this.patientParams,
                         { withCredentials: true }
                         )

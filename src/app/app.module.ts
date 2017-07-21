@@ -33,6 +33,7 @@ import { PatientProcedureReportComponent } from './patient-procedure-report/pati
 import { PatientMethodReportComponent    } from './patient-method-report/patient-method-report.component';
 import { PatientConditionReportDetailComponent } from './patient-condition-report-detail/patient-condition-report-detail.component';
 import { PatientProcedureReportDetailComponent } from './patient-procedure-report-detail/patient-procedure-report-detail.component';
+import { PatientMethodReportDetailComponent    } from './patient-method-report-detail/patient-method-report-detail.component';
 
 const routes: Routes = [
   { path: '',                redirectTo: 'home', pathMatch: 'full' },
@@ -45,6 +46,7 @@ const routes: Routes = [
   { path: 'patients/procedure',         component: PatientProcedureReportComponent },
   { path: 'patients/procedure/detail',  component: PatientProcedureReportDetailComponent },
   { path: 'patients/method',            component: PatientMethodReportComponent },
+  { path: 'patients/method/detail',     component: PatientMethodReportDetailComponent },
   { path: 'patients/search',            component: PatientSearchComponent },
   { path: 'patient/add',                component: PatientAddComponent,
     children: [
@@ -93,6 +95,7 @@ const routes: Routes = [
     PatientMethodReportComponent,
     PatientConditionReportDetailComponent,
     PatientProcedureReportDetailComponent,
+    PatientMethodReportDetailComponent,
   ],
   imports: [
     BrowserModule,

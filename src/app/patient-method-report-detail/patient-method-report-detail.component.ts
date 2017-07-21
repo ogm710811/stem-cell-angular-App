@@ -9,16 +9,16 @@ import { SessionService    } from '../services/session.service';
 import { User              } from '../model/user-model';
 
 @Component({
-  selector: 'app-patient-procedure-report-detail',
-  templateUrl: './patient-procedure-report-detail.component.html',
-  styleUrls: ['./patient-procedure-report-detail.component.css']
+  selector: 'app-patient-method-report-detail',
+  templateUrl: './patient-method-report-detail.component.html',
+  styleUrls: ['./patient-method-report-detail.component.css']
 })
-export class PatientProcedureReportDetailComponent implements OnInit {
+export class PatientMethodReportDetailComponent implements OnInit {
   private error: String;
   private theUser: User;
   private isLoggedIn: boolean = false;
   private patients: Array<Object> = [];
-  private procedure: String;
+  private method: String;
 
   constructor(
     private patientService: PatientService,
@@ -30,18 +30,18 @@ export class PatientProcedureReportDetailComponent implements OnInit {
 
   ngOnInit() {
     // get row clicked in condition report using property
-    this.procedure = this.patientService.getReportDetailInfo();
-    console.log(`PROCEDURE AT REPORT PROCEDURE DETAIL PAGE => ${ this.procedure }`);
-    
-    this.patientService.searchDetailPatientProcedure(this.procedure)
-      .then((patientProcedureDetailList) => {
-        this.patients = patientProcedureDetailList;
-        console.log(`PATIENT CONDITION DETAIL LIST => ${ this.patients }`)
-      })
-      .catch((err) => {
-        const apiError = err.json();
-        this.error = apiError.message;
-      })
+    this.method = this.patientService.getReportDetailInfo();
+    console.log(`PROCEDURE AT REPORT METHOD DETAIL PAGE => ${ this.method }`);
+
+    this.patientService.searchDetailPatientMethod(this.method)
+    .then((patientMethodDetailList) => {
+      this.patients = patientMethodDetailList;
+      console.log(`PATIENT CONDITION DETAIL LIST => ${ this.patients }`)
+    })
+    .catch((err) => {
+      const apiError = err.json();
+      this.error = apiError.message;
+    })
 
     // get user from the service thru the property theUser.
     this.theUser = this.loggedIn.getUserInfo();
@@ -56,4 +56,5 @@ export class PatientProcedureReportDetailComponent implements OnInit {
   viewDetails(id) {
     this.router.navigate(['patient', id]);
   }
+
 }

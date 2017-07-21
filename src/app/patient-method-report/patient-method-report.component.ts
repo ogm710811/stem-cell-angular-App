@@ -32,6 +32,7 @@ export class PatientMethodReportComponent implements OnInit {
    private lpnCount :Number;
    private lfcCount :Number;
    private leyCount :Number;  
+   private methodPatientDetail: String;
 
   constructor(
     private patientService: PatientService,
@@ -98,6 +99,16 @@ export class PatientMethodReportComponent implements OnInit {
     return this.patientMethods.filter((el) =>
       el.indexOf(query.toUpperCase()) > -1
     )
+  }
+
+  rowClickedToDetail(index) {
+    this.methodPatientDetail = this.patientMethodToDisplay[index].code;
+
+    if (this.methodPatientDetail) {
+      this.patientService.setReportDetailInfo(this.methodPatientDetail);
+      console.log(this.methodPatientDetail);
+      this.router.navigate(['patients/method/detail']);
+    }
   }
 
 }

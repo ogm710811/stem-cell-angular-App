@@ -65,6 +65,8 @@ export class PatientConditionReportDetailComponent implements OnInit {
       this.isLoggedIn = true;
       //console.log(`IS_LOGGED_IN PATIENT REPORT CONDITION DETAIL PAGE => ${ this.isLoggedIn }`);
     });
-
+}
+    viewDetails(id) {
+      this.router.navigate(['patient', id]);
     }
 }

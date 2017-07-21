@@ -4,8 +4,8 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h2 class="title">Patient Condition Report Details: {{ condition | uppercase }}</h2>
-          <div class="page_link"><a [routerLink]="['']">Home</a><i class="fa fa-long-arrow-right"></i><span>Reports</span><i class="fa fa-long-arrow-right"></i><span>Patient Condition Report</span><i class="fa fa-long-arrow-right"></i><span>Details</span></div>
+          <h2 class="title">Patient Delivery Method Report Details : {{ method | uppercase }}</h2>
+          <div class="page_link"><a [routerLink]="['']">Home</a><i class="fa fa-long-arrow-right"></i><span>Reports</span><i class="fa fa-long-arrow-right"></i><span>Patient Delivery Method Report</span><i class="fa fa-long-arrow-right"></i><span>Details</span></div>
           <!-- Alert if user is not logged in goes here  -->
           <div *ngIf='!theUser' style="padding-top:50px;"  class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="alert alert-danger" style="color:white; background-color:red;">
@@ -17,7 +17,6 @@
     </div>
   </div>  
 </section>
-
 <div class="container">
   <hr>
   <br>
