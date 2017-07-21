@@ -45,7 +45,7 @@ export class PatientConditionReportDetailComponent implements OnInit {
     // });
 
     // get row clicked in condition report using property
-    this.condition = this.patientService.getReportDetailInfo()
+    this.condition = this.patientService.getReportDetailInfo();
     //console.log(`CONDITION AT REPORT CONDITION DETAIL PAGE => ${ this.condition }`);
     this.patientService.searchDetailPatientCondition(this.condition)
         .then((patientConditionDetailList) => {

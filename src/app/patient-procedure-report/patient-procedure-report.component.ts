@@ -23,6 +23,7 @@ export class PatientProcedureReportComponent implements OnInit {
    }[];
    private adiposeDerivedCount:Number;
    private boneMarrowCount    :Number;
+   private procedurePatientDetail: String;
 
   constructor(
     private patientService: PatientService,
@@ -38,7 +39,7 @@ export class PatientProcedureReportComponent implements OnInit {
         this.patientProcedures = patientProcedureList.map((item) => {
           return item.procedure;
         })
-        console.log(this.patientProcedures);
+        // console.log(this.patientProcedures);
         // Array filters items based on search criteria (query) 
         // then count number of patient with each condition   
         this.adiposeDerivedCount = this.filterProcedures('Adipose Derived Stem Cell').length;
@@ -46,12 +47,12 @@ export class PatientProcedureReportComponent implements OnInit {
  
         //Array patientProcedureToDisplay saves all data needed to display in html
         this.patientProcedureToDisplay = [
-          { 'procedure': 'ADIPOSE DERIVED STEM CELL', 'numberPatient': this.adiposeDerivedCount },
-          { 'procedure': 'BONE MARROW'              , 'numberPatient': this.boneMarrowCount   },
+          { 'procedure': 'Adipose Derived Stem Cell', 'numberPatient': this.adiposeDerivedCount },
+          { 'procedure': 'Bone Marrow'              , 'numberPatient': this.boneMarrowCount   },
         ]
-        this.patientProcedureToDisplay.forEach(element => {
-          console.log(`PATIENT PROCEDURE TO DISPLAY => ${ element.procedure } + ${ element.numberPatient }`);
-        });
+        // this.patientProcedureToDisplay.forEach(element => {
+        //   console.log(`PATIENT PROCEDURE TO DISPLAY => ${ element.procedure } + ${ element.numberPatient }`);
+        // });
       })
       .catch((err) => {
         const apiError = err.json();
@@ -72,5 +73,15 @@ export class PatientProcedureReportComponent implements OnInit {
     return this.patientProcedures.filter((el) =>
       el.indexOf(query) > -1
     )
+  }
+
+  rowClickedToDetail(index) {
+    this.procedurePatientDetail = this.patientProcedureToDisplay[index].procedure;
+
+    if (this.procedurePatientDetail) {
+      this.patientService.setReportDetailInfo(this.procedurePatientDetail);
+      console.log(this.procedurePatientDetail);
+      this.router.navigate(['patients/procedure/detail']);
+    }
   }
 }

@@ -75,6 +75,15 @@ export class PatientService {
     .then(apiResponse => apiResponse.json())
   }
 
+    searchDetailPatientProcedure(procedure) {
+    this.patientParams = `/patients/search/procedure?procedure=${ procedure }`;
+    return this.http.get( this.patientUrl + this.patientParams,
+                        { withCredentials: true }
+                        )
+    .toPromise()
+    .then(apiResponse => apiResponse.json())
+  }
+
    addNewPatient(patient) {
     this.patientParams = `/patients`;
     console.log(`PATIENT AT SERVICE => ${ patient.firstName } ${ patient.lastName } `);
